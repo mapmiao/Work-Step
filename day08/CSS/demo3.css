@@ -1,0 +1,400 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+/*header: 页头*/
+.header {
+    width: 1002px;
+    height: 80px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.header .logoDiv {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.header ul {
+    overflow: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    float: right;
+
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+}
+
+.header ul li:nth-of-type(1)::after,
+.header ul li:nth-of-type(1)::before {
+    content: "";
+    height: 12px;
+    float: right;
+    margin-top: 7px;
+}
+
+.header ul li:nth-of-type(1)::before {
+    border-left: 1px solid #9bb4d6;
+}
+
+.header ul li:nth-of-type(1)::after {
+    border-right: 1px solid #b79b98;
+    margin-left: 6px;
+}
+
+.header ul li:nth-of-type(2) {
+    padding-left: 4px;
+}
+
+.header ul li a {
+    color: #989898;
+    font-size: 12px;
+}
+
+/*nav：导航栏*/
+.nav {
+    min-width: 100%;
+    width: max-content;
+    border-top: 1px solid #bea196;
+    border-bottom: 1px solid #bea196;
+    margin-bottom: 10px;
+}
+
+.nav > div {
+    width: 1002px;
+    height: 37px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.nav ul {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.nav ul li {
+    width: 107px;
+    line-height: 37px;
+    text-align: center;
+    color: #989898;
+}
+
+.nav ul li a {
+    color: #999999;
+    font-size: 14px;
+    display: block;
+}
+
+.nav ul li:hover a {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.nav ul li:hover {
+    background: rgba(0, 0, 0, 0.24);
+}
+
+/*input*/
+.nav label {
+    margin-top: 6px;
+    width: 175px;
+    height: 23px;
+    border: 1px solid #c8c8c8;
+    padding: 0 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+
+}
+
+.nav label input {
+    outline: none;
+    border: none;
+    background: none;
+    width: 150px;
+    color: #989898;
+}
+
+.nav label input::-webkit-input-placeholder {
+    color: #989898;
+    font-size: 13px;
+}
+
+.nav i {
+    color: #989898;
+}
+
+/*main: 页面主题*/
+/*客服*/
+.KeFu {
+    position: fixed;
+    right: 5px;
+    top: 150px;
+}
+
+/*focus: 轮播图*/
+.main {
+    width: 1004px;
+    margin: 0 auto;
+}
+
+.focus {
+    height: 560px;
+    position: relative;
+    border: 1px solid rgba(219, 219, 219, 0.8);
+    border-bottom: 10px solid #bea297;
+    margin-bottom: 40px;
+}
+
+.main .focus::before, .focus::after {
+    font-family: "iconfont";
+    width: 78px;
+    height: 100%;
+    font-size: 38px;
+    color: rgba(255, 255, 255, 0);
+    position: absolute;
+    top: 0;
+    line-height: 550px;
+    text-align: center;
+}
+
+.focus::before {
+    content: "\e600";
+    left: 0;
+}
+
+.focus::after {
+    content: "\e620";
+    right: 0;
+}
+
+.focus:hover::before, .focus:hover::after {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.focus:hover::before {
+    background: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.7));
+}
+
+.focus:hover::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.7));
+}
+
+.main .focus:hover::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.7));
+}
+
+.focus ul li {
+    width: 1002px;
+    height: 550px;
+}
+
+/*news: 最新资讯*/
+.demNews > ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 70px;
+}
+
+.newsSub {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsSub li:nth-of-type(1) {
+    margin-bottom: 13px;
+}
+
+.newsSub h5 {
+    font-size: 14px;
+    color: #1b1b1b;
+    text-align: center;
+    line-height: 20px;
+}
+
+.newsSub p {
+    font-size: 9px;
+    color: #bfa297;
+    text-align: center;
+    line-height: 13px;
+}
+
+.newsSub li:nth-of-type(2) {
+    height: 218px;
+    border: 10px solid #bea297;
+}
+
+/*footer: 页尾*/
+.footer {
+    min-width: 100%;
+    width: max-content;
+    border-top: 1px solid #bea297;
+    background: #f4efed;
+}
+
+.footer > div {
+    width: 1002px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+/*footerLift: 页尾左部分*/
+.footerLeft {
+    padding-top: 31px;
+}
+
+.footerLeft > ul {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.links {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-left: 47px;
+}
+
+.links p {
+    color: #462b20;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.links a {
+    color: #ae8c7f;
+    font-size: 13px;
+}
+
+.links a:hover {
+    color: red;
+    font-size: 14px;
+}
+
+
+/*footerRight: 右边*/
+.footer {
+    height: 280px;
+}
+
+.footerRight {
+    padding-top: 35px;
+}
+
+.footerRight ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.footLogo {
+    height: 36px;
+    margin-bottom: 27px;
+}
+
+.footLogo img {
+    width: 155px;
+}
+
+.moveNum p {
+    font-size: 14px;
+    color: #462b20;
+}
+
+#root .a {
+    font-family: "iconfont";
+    font-size: 22px;
+    margin-right: 97px;
+    margin-top: 14px;
+
+}
+
+.a::before {
+    content: "\e631";
+    color: #529ed3;
+}
+
+.a:after {
+    content: "\e665";
+    color: #a0d62b;
+    margin-left: 13px;
+}
+
+/*pageFooter: 页脚*/
+.pageFooter {
+    min-width: 100%;
+    width: max-content;
+    height: 40px;
+    background: #462b20;
+    color: #ae8c7f;
+    font-size: 12px;
+}
+
+.pageFooter > div {
+    width: 1002px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pageFoot_Left {
+    padding-left: 15px;
+}
+
+.pageFoot_Right ul {
+    display: flex;
+}
+
+.pageFoot_Right ul li {
+    line-height: 40px;
+    text-align: center;
+}
+
+.pageFoot_Right ul li::before, .pageFoot_Right ul li::after {
+    content: "";
+    font-size: 10px;
+}
+
+.pageFoot_Right ul li::before {
+    border-left: 1px solid #562b20;
+}
+
+.pageFoot_Right ul li::after {
+    border-right: 1px solid #ae8c61;
+}
+
+.pageFoot_Right ul li:nth-of-type(1)::before {
+    border-left: 0;
+}
+
+.pageFoot_Right ul li:nth-of-type(4)::after {
+    border-right: 0;
+}
+
+.pageFoot_Right ul a {
+    color: #aa8c7f;
+    margin: 0 5px;
+}

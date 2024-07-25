@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo3</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <link href="//at.alicdn.com/t/c/font_4624650_kfc5oaeke7.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #root {
+            width: 500px;
+            margin: 40px auto;
+        }
+
+        .ulTop {
+            height: 30px;
+            padding-right: 18px;
+            margin-bottom: 10px;
+        }
+
+        .ulTop > li {
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .ulTop > li > span {
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        .iImage {
+            font-size: 30px;
+            color: #63ad33;
+        }
+
+        .textTLeft {
+            float: left;
+            color: #315900;
+        }
+
+        .textTRight {
+            font-size: 12px;
+            float: right;
+            color: #b0b3b2;
+        }
+
+        .textRight {
+            float: right;
+            color: #a7adb0;
+        }
+
+        .ulBottom li {
+            border-bottom: 2px dotted #b0b3b2;
+        }
+
+        .ulBottom a {
+            line-height: 55px;
+            font-size: 14px;
+            color: #5a5144;
+        }
+
+        li {
+            list-style: none;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <ul class="ulTop">
+        <li class="textTLeft">
+            <i class="iImage iconfont icon-new"></i>
+            <span>最新发布</span>
+        </li>
+        <li class="textTRight"><a href="">更多></a></li>
+    </ul>
+
+    <ul class="ulBottom">
+        <li v-for="item in main">
+            <a href="">
+                <span class="textLeft">{{item.content}}</span>
+                <span class="textRight">{{item.time}}</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            main: [
+                {content: "赵家祥：90后小伙紫菜情缘", time: "04-13"},
+                {content: "乡村振兴品牌节暨赋能计划啊发布仪式在京举行", time: "04-13"},
+                {content: "云南普洱：趁黑割胶天亮收割 胶农期待好收成", time: "04-13"},
+                {content: "新疆博湖：赛马斗羊 异域风情客来", time: "04-13"},
+                {content: "需求增加 珍珠价格涨幅超预期", time: "04-13"}
+            ]
+        }
+    })
+</script>
+</body>
+</html>
