@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo4</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+        }
+        img {
+            width: 100%;
+        }
+        ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        li {
+            margin: 10px;
+            width: 18%;
+            text-align: center;
+            background: #f4f5f6;
+        }
+        .a {
+            margin: 3px auto;
+            width: 80%;
+        }
+        .top {
+            border-top: 2px solid #989898;
+            border-bottom: 1px solid #dce0e4;
+            height: 55px;
+            line-height: 55px;
+            margin-bottom: 25px;
+        }
+        .left {
+            color: #2f4181;
+            font-weight: 700;
+            font-size: 25px;
+            margin-right: 20px;
+        }
+        .right {
+            color: #a4b5d0;
+            font-size: 14px;
+        }
+        p {
+            line-height: 37px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="a">
+    <div class="top">
+        <span class="left">图片新闻</span><span class="right">PHOTOS↘</span>
+    </div>
+    <ul id="root" class="res">
+        <li v-for="items in shopping" :key="items.id">
+            <div class="boxShadow"><img alt="" v-bind:src="items.images"/></div>
+            <p>{{items.name}}</p>
+        </li>
+
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            shopping: [
+                {id: 1, images: "images/屏幕截图 2024-07-20 090540.png", name: "鸟语花香春光好"},
+                {id: 2, images: "images/屏幕截图 2024-07-20 090540.png", name: "鸟语花香春光好"},
+                {id: 3, images: "images/屏幕截图 2024-07-20 090540.png", name: "鸟语花香春光好"},
+                {id: 4, images: "images/屏幕截图 2024-07-20 090540.png", name: "鸟语花香春光好"},
+                {id: 5, images: "images/屏幕截图 2024-07-20 090540.png", name: "鸟语花香春光好"},
+                {id: 6, images: "images/屏幕截图 2024-07-20 090540.png", name: "鸟语花香春光好"},
+                {id: 7, images: "images/屏幕截图 2024-07-20 090540.png", name: "鸟语花香春光好"},
+                {id: 8, images: "images/屏幕截图 2024-07-20 090540.png", name: "鸟语花香春光好"},
+                {id: 9, images: "images/屏幕截图 2024-07-20 090540.png", name: "鸟语花香春光好"},
+                {id: 10, images: "images/屏幕截图 2024-07-20 090540.png", name: "鸟语花香春光好"},
+            ]
+
+        }
+    })
+</script>
+
+</body>
+</html>

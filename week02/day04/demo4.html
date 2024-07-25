@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #root {
+            color: white;
+        }
+
+        #print {
+            font-size: 20px;
+        }
+
+        table {
+            width: 298px;
+            margin: 50px auto;
+            height: 457px;
+            background: #2e2d2b;
+            border-spacing: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        #oldResult {
+            color: #ff0000;
+            font-size: 16px;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+
+        }
+
+        td {
+            border: 1px solid white;
+            width: 60px;
+            height: 60px;
+            font-size: 12px;
+        }
+
+        .prent {
+            height: 100%;
+            background: #cedccb;
+            text-align: right;
+            padding-right: 5px;
+            color: black;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0);
+            color: #fefefe;
+            border: 0;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <table>
+        <tr>
+            <td class="prent" colspan="4">
+                <span id="oldResult"></span>
+                <span id="aaa"></span>
+                <div id="print">请开始输入进行运算吧！</div>
+            </td>
+        </tr>
+        <tr>
+            <td class="pad">num<br>lock</td>
+            <td class="pad" id="into">
+                <button onclick="opes(this.value)" value="/">/</button>
+            </td>
+            <td class="pad" id="times">
+                <button onclick="opes(this.value)" value="*">*</button>
+            </td>
+            <td class="pad" id="sub">
+                <button onclick="opes(this.value)" value="-">-</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="number(this.value)" value="7">7<br>Home</button>
+            </td>
+            <td>
+                <button onclick="number(this.value)" value="8">8<br>↑</button>
+            </td>
+            <td>
+                <button onclick="number(this.value)" value="9">9<br>PgUp</button>
+            </td>
+            <td class="pad" id="add" rowspan="2">
+                <button onclick="opes(this.value)" value="+">+</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="number(this.value)" value="4">4<br>←</button>
+            </td>
+            <td>
+                <button onclick="number(this.value)" value="5">5</button>
+            </td>
+            <td>
+                <button onclick="number(this.value)" value="6">6<br>→</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="number(this.value)" value="1">1<br>End</button>
+            </td>
+            <td>
+                <button onclick="number(this.value)" value="2">2<br>↓</button>
+            </td>
+            <td>
+                <button onclick="number(this.value)" value="3">3<br>PgDn</button>
+            </td>
+            <td class="pad" id="enter" onclick="printf()" rowspan="2">Enter</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button onclick="number(this.value)" value="0">0<br>Ins</button>
+            </td>
+            <td>.<br>Del</td>
+        </tr>
+    </table>
+
+</div>
+<script>
+    let print = document.getElementById("print")
+    let aaa = document.getElementById("aaa")
+    let oldResult = document.getElementById("oldResult")
+
+
+    let num = ""; //记录输入的一个运算位
+    let nums = []; //存储所有的运算位
+    let ope = []; //记录所有的运算符
+    let indexNum = 0; //记录运算位的个数
+    let result = NaN; //输出结果
+    let index = 0; //运算符个数
+
+    // 初始化变量
+    function init() {
+        num = "";
+        nums = [];
+        ope = [];
+        indexNum = 0;
+        index = 0;
+    }
+
+    // 记录输入的数字
+    function number(a) {
+
+        if (!isNaN(result) && num === "") {
+            result = NaN
+        }
+        num += a;
+        indexNum = index + 1
+        print.innerHTML = num;
+    }
+
+    // 记录输入的运算符
+    function opes(opes) {
+        printf()
+        aaa.innerHTML = opes
+        oldResult.innerHTML = num;
+        if (!isNaN(result) && num === "") {
+            oldResult.innerHTML = result;
+            indexNum = 1;
+        }
+
+        if (index === indexNum - 1) {
+            ope[index] = opes;
+            if (!isNaN(result)) {
+                num = result;
+            }
+            nums[index] = num;
+            num = ""
+            index++;
+        } else {
+            alert("不可以连续输入运算符！")
+            init();
+        }
+        con()
+    }
+
+    // 输出结果并运算
+    function printf() {
+        nums[index] = num;
+        result = nums[0] * 1;
+        let num1 = 0;
+        for (let i = 0; i < index; i++) {
+            num1 = nums[i + 1] * 1;
+            switch (ope[i]) {
+                case "+":
+                    result += num1
+                    break;
+                case "-":
+                    result -= num1
+                    break;
+                case "*":
+                    for (let j = 1; j < num1; j++) {
+                        result += nums[i] * 1
+                    }
+                    break;
+                case "/":
+                    if (confirm("除法不会写!!需要帮你跳转其它计算器么"))
+                        window.open("https://www.desmos.com/scientific?lang=zh-CN");
+                    init();
+                    break;
+            }
+        }
+        init();
+        print.innerHTML = "0";
+        oldResult.innerHTML = result;
+        con()
+    }
+
+    function con() {
+        console.log("！！~~~~~~~~~~~~~~~~~~~~！！")
+        console.log("num：" + num)
+        console.log("index：" + index)
+        console.log("indexNum：" + indexNum)
+        console.log("nums：" + nums)
+        console.log("ope：" + ope)
+        console.log("result：" + result)
+        console.log("！！~~~~~~~~~~~~~~~~~~~~！！")
+    }
+
+</script>
+
+</body>
+</html>

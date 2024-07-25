@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo2</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #222222;
+        }
+        ul {
+            list-style: none;
+            width: 70%;
+            margin: 5px 0;
+        }
+        #root {
+            width: 500px;
+            margin: 60px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            color: #888888;
+            padding: 16px;
+        }
+        #root > div {
+            width: 25%;
+        }
+        h3 {
+            color: #efefef;
+            margin-bottom: 20px;
+        }
+
+        li {
+            height: 30px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="root">
+    <div v-for="item in main">
+        <h3>{{item.title}}</h3>
+        <ul>
+            <li v-for="text in item.content">{{text}}</li>
+        </ul>
+    </div>
+</div>
+
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            main: [{
+                title: "关于",
+                content: [
+                    "联系我们","大事记","注册协议","LGPL协议","付款方式","变更日志"
+                ]},{
+                title: "帮助",
+                content: [
+                    "入门指导","板块与语法","常用变量","模版制作","二次开发","常见问题"
+                ]},{
+                title: "下载",
+                content: [
+                    "官方产品","模块风格","插件与拓展","其他下载"
+                ]},{
+                title: "服务",
+                content: [
+                    "商业授权","虚拟主机","建站知识","分享学习"
+                ]},
+            ]
+
+        }
+    })
+</script>
+</body>
+</html>

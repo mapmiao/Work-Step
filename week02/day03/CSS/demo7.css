@@ -1,0 +1,236 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+
+/*header*/
+.header {
+    background: #f5f5f5;
+}
+
+.headerM {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: auto;
+}
+
+.leftHeader {
+    height: 100%;
+    float: left;
+    margin-top: 5px;
+}
+
+.leftHeader img {
+    margin-top: 10px;
+}
+
+.rightHeader {
+    width: 230px;
+    float: right;
+    margin-top: 5px;
+}
+
+.rightHeader ul {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+
+    position: relative;
+}
+
+.liHeader > span:hover {
+    color: #ff0000;
+    font-size: 13px;
+}
+
+.liHeader {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.liHeader::before {
+    content: "|";
+    font-size: 11px;
+    color: #dbdbdb;
+    padding: 0 4px;
+}
+
+.liHeader:nth-of-type(1)::before {
+    content: "";
+}
+
+.liHeader span {
+    color: #434343;
+    font-size: 12px;
+}
+
+/*input*/
+input {
+    float: right;
+    box-sizing: border-box;
+    width: 85%;
+    height: 30px;
+    border: 0;
+    margin-top: 5px;
+    background: #ececec;
+    padding: 5px 10px;
+    line-height: 20px;
+    border-radius: 5px;
+
+    /*去掉点击后出现的边框*/
+    outline: none;
+}
+
+/*topNav*/
+.topNav {
+    width: 100%;
+    background: #0159a9;
+    border-bottom: 2px solid #a6a6a6;
+}
+.topNav > div {
+    border-bottom: 1px solid #fdfdfd;
+}
+
+.topNav ul {
+    width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+
+}
+
+.topNav ul li {
+    width: 120px;
+    height: 60px;
+    line-height: 60px;
+}
+
+.topNav ul li a {
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+}
+
+.liNav:hover a {
+    background: #004788;
+    font-size: 18px;
+}
+
+.liNav::before, .liNav::after {
+    content: "";
+    border-left: 1px solid #003b6f;
+    height: 30px;
+    line-height: 60px;
+    position: absolute;
+    top: 15px;
+}
+
+.liNav::after {
+    border-left: 1px solid #036ece;
+    margin-left: 1px;
+}
+
+.liNav:nth-of-type(1)::before,
+.liNav:nth-of-type(1)::after {
+    content: "";
+    border: 0;
+}
+
+/*main*/
+.main {
+    width: 1200px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+.main_focus {
+    height: 358px;
+}
+.focus {
+    width: 400%;
+    height: 358px;
+    position: absolute;
+}
+
+.focus_li {
+    float: left;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+.focus_a {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+
+.focus_a li {
+    width: 30px;
+    height: 10px;
+    float: left;
+    margin-left: 8px;
+    background: rgba(253, 253, 253, 0.5);
+}
+
+.focus_a .focus_moveLi {
+    background: rgb(253, 253, 253);
+    transition: all 1000ms;
+
+}
+
+/*con_news*/
+.com_news {
+    width: 1200px;
+    margin: 60px auto;
+}
+
+.com_news ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.com_news li {
+    width: 545px;
+    height: 153px;
+    border: 2px solid #ebebeb;
+}
+.com_news .textImg {
+    width: 240px;
+    float: left;
+}
+.news_li a {
+    display: flex;
+}
+.textImg img {
+    width: 240px;
+}
+.text {
+    margin: 15px 20px;
+}
+.text h4{
+    color: #767b7c;
+    line-height: 35px;
+}
+.text span, p {
+    color: #dadada;
+    font-size: 12px;
+    line-height: 25px;
+}
+.text h4:hover, span:hover, p:hover  {
+    color: red;
+}
