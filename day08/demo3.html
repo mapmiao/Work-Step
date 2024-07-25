@@ -1,144 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>demo3</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
-    <link href="./CSS/demo3.css" rel="stylesheet">
-    <link href="https://at.alicdn.com/t/c/font_4624650_qpf0xhpu7lg.css" rel="stylesheet">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            background: #f2f2f2;
+        }
+        #root td {
+            width: 150px;
+            height: 60px;
+            border: 2px solid #cbd6d8;
+            text-align: center;
+        }
+        #root tr td:nth-of-type(4) {
+            background: rgba(190, 255, 0, 0.13);
+        }
+        .a > div {
+            width: 140px;
+            height: 16px;
+            background: white;
+            margin: 5px;
+        }
+        .a > div > div {
+            width: 90%;
+            height: 100%;
+            background: linear-gradient(to right, #6d8920, #b1cb24);
+        }
+        #root .a2 {
+            width: 40%;
+            background: linear-gradient(to right, #5ba5cd, #aadbf8);
+        }
+        #root .a3 {
+            width: 55%;
+            background: linear-gradient(to right, #5ba5cd, #aadbf8);
+        }
 
+        #root .a4 {
+            width: 20%;
+            background: linear-gradient(to right, #fc9f2d, #fdc401);
+        }
+
+        #root .a5 {
+            width: 15%;
+            background: linear-gradient(to right, #fc9f2d, #fdc401);
+        }
+        .b {
+            background: #e7e7e7;
+        }
+
+    </style>
 </head>
 <body>
 <div id="root">
-    <div class="header">
-        <div class="logoDiv">
-            <a href="">
-                <img alt="" src="./images/demo3_logo.png">
-            </a>
-        </div>
-        <ul>
-            <li><a href="">会员登录</a></li>
-            <li><a href="">会员注册</a></li>
-        </ul>
-    </div>
-    <div class="nav">
-        <div>
-            <ul>
-                <li v-for="item in navs"><a href="">{{item}}</a></li>
-            </ul>
-            <label>
-                <input placeholder="请输入关键字" type="text">
-                <i class="iconfont icon-Magnifier"></i>
-            </label>
-
-        </div>
-    </div>
-    <div class="main">
-        <div class="focus">
-            <ul>
-                <li v-for="item in focus">
-                    <img :src="item" alt="">
-                </li>
-            </ul>
-        </div>
-        <div class="demNews">
-            <ul>
-                <li v-for="item in news">
-                    <a href="">
-                        <ul class="newsSub">
-                            <li class="">
-                                <h5>{{item.title}}</h5>
-                                <p>{{item.text}}</p>
-                            </li>
-                            <li><img :src="item.img" :title="item.title" alt=""></li>
-                        </ul>
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-    </div>
-
-    <div class="footer">
-        <div>
-            <div class="footerLeft">
-                <ul>
-                    <li class="links" v-for="items in footer">
-                        <p>{{items.title}}</p>
-                        <ul>
-                            <li v-for="item in items.links"><a href="">{{item}}</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="footerRight">
-                <ul>
-                    <li class="footLogo"><img alt="" src="./images/demo3_logo.png"></li>
-                    <li class="moveNum">
-                        <p>服务热线：020-36685219</p>
-                    </li>
-                    <li class="a"></li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
-
+    <table>
+        <caption><h1>国内IT培训机构排名</h1></caption>
+        <tr>
+            <td>名次</td>
+            <td>机构</td>
+            <td>社会调查好评度</td>
+            <td>学员口碑星级</td>
+            <td>项目领域</td>
+            <td>项目级别</td>
+        </tr>
+        <tr class="b">
+            <td>第一名</td>
+            <td>千锋教育</td>
+            <td>☆☆☆☆</td>
+            <td>☆☆☆☆☆</td>
+            <td class="a">
+                <div>
+                    <div></div>
+                </div>
+            </td>
+            <td>中高端项目</td>
+        </tr>
+        <tr>
+            <td>第二名</td>
+            <td>达内</td>
+            <td>☆</td>
+            <td>☆☆</td>
+            <td class="a">
+                <div>
+                    <div class="a2"></div>
+                </div>
+            </td>
+            <td>中小型项目</td>
+        </tr>
+        <tr class="b">
+            <td>第三名</td>
+            <td>传智<br>黑马</td>
+            <td>☆☆</td>
+            <td>☆</td>
+            <td class="a">
+                <div>
+                    <div class="a3"></div>
+                </div>
+            </td>
+            <td>中小型项目</td>
+        </tr>
+        <tr>
+            <td>第四名</td>
+            <td>尚硅谷</td>
+            <td>☆</td>
+            <td>☆</td>
+            <td class="a">
+                <div>
+                    <div class="a4"></div>
+                </div>
+            </td>
+            <td>中小型项目</td>
+        </tr>
+        <tr class="b">
+            <td>第五名</td>
+            <td>尚学堂</td>
+            <td>☆</td>
+            <td>☆</td>
+            <td class="a">
+                <div>
+                    <div class="a5"></div>
+                </div>
+            </td>
+            <td>中小型项目</td>
+        </tr>
+    </table>
 </div>
-<div class="KeFu"><a href="">
-    <img alt="" src="./images/demo3_ad.png">
-</a></div>
-<div class="pageFooter">
-    <div>
-        <div class="pageFoot_Left">
-            <span>COPYRIGHT 2003-2015 广州美殿商贸有限公司</span>
-        </div>
-
-        <div class="pageFoot_Right">
-            <ul>
-                <li><a href="">流量统计</a></li>
-                <li><a href="">网站统计</a></li>
-                <li><a href="">友情链接</a></li>
-                <li><a href="">法律声明</a></li>
-            </ul>
-        </div>
-
-    </div>
-</div>
-<script>
-    new Vue({
-        el: "#root",
-        data() {
-            return {
-                navs: ["首页", "生活方式", "家具类别", "关于美典", "新闻中心", "联系我们"],
-                focus: [
-                    "./images/demo3_focus1.png"
-                ],
-                news: [
-                    {title: "全国代理商", text: "NATIONAL AGENTS", img: "./images/demo3_new1.png"},
-                    {title: "新品、进口馆", text: "NEW IMPORT MUSEUM", img: "./images/demo3_new2.png"},
-                    {title: "客户分享", text: "CUSTOMERS TO SHARE", img: "./images/demo3_new3.png"}
-                ],
-                footer: [{
-                    title: "生活方式",
-                    links: ["客厅家具", "卧室家具", "餐厅家具", "书房家具", "韩式手绘", "高端家具", "休闲系列", "家居饰品"]
-                }, {
-                    title: "家具类型",
-                    links: ["客厅家具", "卧室家具", "餐厅家具", "书房家具", "韩式手绘", "高端家具", "休闲系列", "家居饰品"]
-                }, {
-                    title: "关于美典",
-                    links: ["公司简介", "发展历程", "公司词条", "企业招聘"]
-                }, {
-                    title: "新闻中心",
-                    links: ["公司新闻", "行业新闻"]
-                }, {
-                    title: "联系方式",
-                    links: ["联系方式", "在线留言"]
-                }]
-
-            }
-        }
-    })
-</script>
 </body>
 </html>

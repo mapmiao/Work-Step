@@ -3,12 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>demo2</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
-
     <style>
         *{
             margin: 0;
             padding: 0;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 150px;
+            height: 60px;
+            border: 2px solid #000000;
+            text-align: center;
         }
 
 
@@ -17,17 +26,33 @@
 <body>
 
 <div id="root">
+    <table>
+        <tr>
+            <td>会员姓名</td>
+            <td></td>
+            <td>出生日期</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>身份证号</td>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td>通信地址</td>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td>联系电话</td>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td>会员卡号</td>
+            <td colspan="3"></td>
+        </tr>
+    </table>
 
 </div>
 
 
-<script>
-    new Vue({
-        el: "#root",
-        data: {
-
-        }
-    })
-</script>
 </body>
 </html>

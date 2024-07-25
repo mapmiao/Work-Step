@@ -11,20 +11,74 @@
             padding: 0;
         }
 
+        table {
+            border-collapse: collapse;
+        }
+
+        td {
+            width: 150px;
+            height: 60px;
+            border: 2px solid #000000;
+            text-align: center;
+        }
+        .a {
+            width: 200px;
+        }
+        .a input {
+            width: 100px;
+        }
+        .b td:nth-of-type(1){
+            text-align: right;
+        }
+        .b td:nth-of-type(2){
+            text-align: left;
+        }
     </style>
 
 </head>
 <body>
 <div id="root">
-    <img src="" alt="">
+    <table>
+        <tr>
+            <td rowspan="4">总体信息</td>
+            <td colspan="2">用户注册</td>
+            <!--            <td></td>-->
+        </tr>
+        <tr class="b">
+            <!--            <td></td>-->
+            <td>用户名：</td>
+            <td class="a">
+                <label>
+                    <input placeholder="填写用户名" type="text">
+                </label>
+            </td>
+        </tr>
+        <tr class="b">
+            <!--            <td></td>-->
+            <td>密&emsp;码：</td>
+            <td class="a">
+                <label>
+                    <input type="password">
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <!--            <td></td>-->
+            <td colspan="2">
+                <button>提交</button>
+                <button>重置</button>
+            </td>
+            <!--            <td></td>-->
+        </tr>
+    </table>
 
 </div>
 
 <script>
     new Vue({
         el: "#root",
-        data: {
-
+        data() {
+            return {}
         }
     })
 </script>
