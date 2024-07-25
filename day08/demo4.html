@@ -15,6 +15,10 @@
             color: white;
         }
 
+        #print {
+            font-size: 20px;
+        }
+
         table {
             width: 298px;
             margin: 50px auto;
@@ -22,6 +26,16 @@
             background: #2e2d2b;
             border-spacing: 10px;
             text-align: center;
+            position: relative;
+        }
+
+        #oldResult {
+            color: #ff0000;
+            font-size: 16px;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+
         }
 
         td {
@@ -48,14 +62,6 @@
             border: 0;
         }
 
-        /* +，-，!，* */
-        #add {
-            background: #63b9ac;
-        }
-
-        #sub, #into, #times, #enter {
-            background: #8f8b8a;
-        }
 
     </style>
 </head>
@@ -65,6 +71,7 @@
         <tr>
             <td class="prent" colspan="4">
                 <span id="oldResult"></span>
+                <span id="aaa"></span>
                 <div id="print">请开始输入进行运算吧！</div>
             </td>
         </tr>
@@ -128,6 +135,8 @@
 </div>
 <script>
     let print = document.getElementById("print")
+    let aaa = document.getElementById("aaa")
+    let oldResult = document.getElementById("oldResult")
 
 
     let num = ""; //记录输入的一个运算位
@@ -148,6 +157,7 @@
 
     // 记录输入的数字
     function number(a) {
+
         if (!isNaN(result) && num === "") {
             result = NaN
         }
@@ -158,10 +168,14 @@
 
     // 记录输入的运算符
     function opes(opes) {
-        con()
+        printf()
+        aaa.innerHTML = opes
+        oldResult.innerHTML = num;
         if (!isNaN(result) && num === "") {
+            oldResult.innerHTML = result;
             indexNum = 1;
         }
+
         if (index === indexNum - 1) {
             ope[index] = opes;
             if (!isNaN(result)) {
@@ -197,15 +211,15 @@
                     }
                     break;
                 case "/":
-                    if(confirm("除法不会写!!需要帮你跳转其它计算器么"))
+                    if (confirm("除法不会写!!需要帮你跳转其它计算器么"))
                         window.open("https://www.desmos.com/scientific?lang=zh-CN");
                     init();
                     break;
             }
         }
         init();
-        print.innerHTML = result;
-
+        print.innerHTML = "0";
+        oldResult.innerHTML = result;
         con()
     }
 
