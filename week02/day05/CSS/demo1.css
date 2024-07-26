@@ -216,6 +216,14 @@ a:link {
     color: #fdfdfd;
     background: #6eb2de;
 }
+.contentL > div {
+    height: 33px;
+    text-align: center;
+    & img {
+        margin-top: 3px;
+    }
+    border-bottom: 1px solid #dedede;
+}
 /*main 内容*/
 .contentR {
     width: calc(90% - 238px);
