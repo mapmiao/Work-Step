@@ -42,7 +42,7 @@
                         <span>{{itemA.title}}</span>
                         <i class="iconfont icon-xiajiantou"></i>
                     </p>
-                    <ul id="navInternal_ul" :class="itemA.disNav">
+                    <ul id="navInternal_ul" v-model:class="itemA.disNav">
                         <li class="navInternal" v-for="itemB in itemA.nav">
                             <span>{{itemB.name}}</span>
                         </li>
