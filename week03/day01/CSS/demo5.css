@@ -22,9 +22,11 @@ html body #root {
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 10px 118px 10px 118px 10px 118px 10px 118px 10px 118px 10px 118px 10px;
-    grid-template-rows: 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px;
-
+    /* grid-template-columns: 10px 118px 10px 118px 10px 118px 10px 118px 10px 118px 10px 118px 10px; */
+    /* grid-template-rows: 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px 79px 10px; */
+    grid-template-columns: repeat(6, 106px);
+    grid-template-rows: repeat(13, 68px);
+    gap: 20px;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -34,6 +36,7 @@ html body #root {
     width: 100%;
     height: 100%;
     background: #124458;
+    outline: 20px solid #124458;
 }
 .xiaYi {
 z-index: -1;
