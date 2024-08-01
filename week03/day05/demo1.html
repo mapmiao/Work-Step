@@ -7,39 +7,10 @@
 </head>
 <body>
 <div id="root">
-    <div>
-        <div>
-            <button class="" value="1" onclick="a(this.value)">1</button>
-            <button class="" value="+" onclick="a(this.value)">+</button>
-            <button class="as" onclick="a(this.value)" value="1">1</button>
-            <button class="as" onclick="a(this.value)" value="2">2</button>
-            <button class="as" onclick="a(this.value)" value="3">3</button>
-            <button class="as" onclick="a(this.value)" value="4">4</button>
-            <button class="as" onclick="a(this.value)" value="5">5</button>
-            <button class="as" onclick="a(this.value)" value="=">=</button>
-        </div>
-    </div>
+
 </div>
 <script>
-    var as = document.getElementsByClassName("as")
-    var num = ""  //存储输入的数字
-    var num1  //第一个运算位
-    var num2  //第二个运算位
-    function a(src) {
-        if (src >=0 && src <= 9 )
-            num += src
-        else if (src === "+"){
-            num1 = num * 1 //把输入的第一个运算数存储到num1中并转换为数值类型
-            num = ""  // 同时吧存储输入数字的num清空
-            console.log("num1:" + num1)
-        } else if (src === "=") {
-            num2 = num * 1
-            console.log("num2:" + num2)
-        }
-        // console.log(src)
-        console.log(num)
-    }
-    num = ""
+
 </script>
 
 </body>
