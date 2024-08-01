@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+</div>
+<button onclick="a()">点击我输入半径计算圆的面积</button>
+
+<script>
+    let root = document.getElementById("root")
+    root.innerHTML = "<h1>一级标题</h1>" + "<h2>二级标题</h2>" + "<h3>三级标题</h3>" + "<h4>四级标题</h4>" + "<h5>五级标题</h5>" + "<h6>六级标题</h6>"
+    root.innerHTML += "<table><tr><td>每一行打印</td></tr></table>"
+
+    function a() {
+        let r = prompt("请输入需要计算的圆的半径")
+        if (r <= 0) {
+            alert("圆的半径不能为空")
+        } else {
+            console.log("这个半径为：" + r + "的圆面积为:" + 3.14 * (r ** 2))
+        }
+    }
+
+
+</script>
+
+</body>
+</html>
