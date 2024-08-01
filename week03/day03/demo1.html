@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="root">
+
+</div>
+<script>
+    alert("首先是判断语句")
+
+    // demo1
+    alert("demo1——定义一个变量并进行赋值, 再控制台输出对应的内容(或者:使用输入框输入一个数值在控制台输出即可;)\n" +
+        "如果年龄小于18岁，则输出用户是未成年人。\n" +
+        "如果年龄在18岁到60岁之间，则输出用户已经成年。\n" +
+        "如果年龄大于或等于60岁，则输出用户已经退休。")
+    let age = prompt("请输入年龄")
+    if (age < 18)
+        alert("用户为未成年人");
+    else if (age >= 18 && age < 60)
+        alert("用户已经成年了");
+    else if (age > 60)
+        alert("用户已经退休了");
+
+    // demo2
+    alert("demo2——判断一个数值是否为正数")
+    let num1 = prompt("请随意输入一个数值进行判断数值是否为整数");
+    if (num1 > 0)
+        alert("这个数是正数");
+    else
+        alert("这个数不是正数");
+
+    // demo3
+    alert("demo3——判断一个数值是否为偶数/奇数")
+    let num2 = prompt("输入一个数判断是否为奇数偶数");
+    if (num2 % 2 === 0)
+        alert("这个数为偶数");
+    else
+        alert("这个数为奇数");
+
+    // demo4
+    alert("demo4——判断一个数值是否为质数 (除了1和它自身外，不能被其他数整除)")
+    let num3 = prompt("输入一个数判断这个数是否为质数")
+    let num3_bool = true;
+    for (let i = 2; i < num3; i++) {
+        if (num3 % i === 0) {
+            num3_bool = false;
+            break;
+        }
+    }
+    if (num3_bool)
+        alert("这个数为质数");
+    else
+        alert("这个数不是质数");
+
+
+    // 单循环
+    alert("接下来是单循环")
+    // demo1
+    alert("demo1——循环打印1-10 ( 包含1包含10 )")
+    let num2_1 = ""
+    for (let i = 1; i <= 10; i++) {
+        num2_1 += i + " ";
+    }
+    alert(num2_1)
+
+    // demo2
+    alert("demo2——循环打印1-10 ( 之间的偶数)")
+    let num2_2 = ""
+    for (let i = 1; i <= 10; i++) {
+        if (i % 2 === 0)
+            num2_2 += i + " ";
+    }
+    alert(num2_2)
+
+    // demo3
+    alert("demo3——使用循环完成1到5的求和")
+    let num2_3 = 0
+    for (let i = 1; i <= 5; i++) {
+        num2_3 += i;
+    }
+    alert(num2_3)
+
+    // demo4
+    alert("demo4——使用循环完成1到5的累乘")
+    let num2_4 = 0
+    for (let i = 1; i <= 5; i++) {
+        num2_4 *= i;
+    }
+    alert(num2_4)
+
+
+    // demo5
+    alert("demo5——反转字符串'abcdefg' 反转结果为 'gfedcba'")
+    let num2_5 = 'abcdefg'
+    let num2_5_1 = ""
+    for (let i = num2_5.length - 1; i >= 0; i--) {
+        num2_5_1 += num2_5[i];
+    }
+    alert(num2_5_1)
+
+
+    alert("双循环")
+    let xing = ''
+    // demo1
+    alert("demo1——打印矩阵五角星")
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+            xing += "*";
+        }
+         xing += '\n'
+    }
+    alert(xing)
+
+
+    // demo2
+    alert("demo2——打印倒三角")
+    xing = ''
+    for (let i = 0; i < 5; i++) {
+        for (let j = 5; j > i; j--) {
+            xing += "*"
+        }
+        xing += "\n"
+    }
+    alert(xing)
+
+    // demo3
+    alert("demo3——打印正三角")
+    xing = ''
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j <= i; j++) {
+            xing += "*"
+        }
+        xing += "\n"
+    }
+    alert(xing)
+
+    // demo4
+    alert("demo4——打印九九乘法表")
+    xing = ''
+    for (let i = 1; i <= 9; i++) {
+        for (let j = 1; j <= i; j++) {
+            xing += i + '×' + j + '='
+            xing += i * j + " "
+        }
+        xing += "<br>"
+    }
+    root.innerHTML = xing
+
+
+</script>
+
+</body>
+</html>
