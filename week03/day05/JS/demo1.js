@@ -1,4 +1,3 @@
-
 new Vue({
     el: "#root",
     data() {
@@ -49,7 +48,7 @@ new Vue({
                     this.Print(this.operVar);
                     this.numDis = false;
                     // return
-                } else if(!this.operDis && !this.numDis) {
+                } else if (!this.operDis && !this.numDis) {
                     this.numOld = this.numNew;
                     this.numNew = 0;
                 }
