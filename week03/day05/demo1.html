@@ -69,12 +69,10 @@
                 else {
                     // 连续运算
                     if (this.operDis && this.numDis) {
-                        console.log("算了")
                         this.Print(this.operVar);
                         this.numDis = false;
                         // return
                     } else if(this.numDis) {
-                        console.log("不算了")
                         this.numOld = this.numNew;
                         this.numNew = 0;
                     }
