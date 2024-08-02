@@ -1,0 +1,75 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$but: 68px; //每个单元格的大小
+$size: 16px;
+
+@mixin radio($size-r, $bgColor: #f4f4f4) {
+  border-radius: $size-r;
+  border: none;
+  background: $bgColor;
+}
+
+#root {
+  width: ($but+2px) * 4 + $but/4;
+  margin: $but auto;
+  padding: $but/3 $but/10 $but/10;
+  font-size: $size;
+  @include radio(10px);
+}
+
+.header {
+  width: 100%;
+  margin-bottom: $but/3;
+  padding: $but/10;
+  @include radio(2px);
+  outline: none;
+  & div{
+    height: 50%;
+    text-align: end;
+    &:nth-child(1) {
+      font-size: 1em;
+    }
+    &:nth-child(2) {
+      font-size: 2em;
+    }
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(4, $but);
+  grid-template-rows: repeat(5, $but);
+  gap: 2px;
+  align-content: space-around;
+  justify-content: space-between;
+
+  & div {
+    &:nth-child(8) {
+      grid-row: 2/4;
+      grid-column: 4/5;
+    }
+
+    &:nth-child(15) {
+      grid-column: 4/5;
+      grid-row: 4/6;
+    }
+
+    &:nth-child(16) {
+      grid-column: 1/3;
+      grid-row: 5/6;
+    }
+
+    & button {
+      width: 100%;
+      height: 100%;
+      @include radio(2px, #e6e6e6);
+      &:hover {
+        background: #efefef;
+      }
+    }
+  }
+}

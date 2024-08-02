@@ -144,7 +144,8 @@
             <td>.<br>Del</td>
         </tr>
     </table>
-    <button id="clear" onclick="Clear()" value="">清除数据</button>
+    <button id="clear" onclick="
+    Clear()" value="">清除数据</button>
 
 </div>
 <script>
@@ -177,7 +178,7 @@
         }
         num += a;
         indexNum = index + 1
-        print.innerHTML = num;
+        print.innerHTML = num * 1;
     }
 
     // 记录输入的运算符
@@ -222,9 +223,7 @@
                         result -= num1
                         break;
                     case "*":
-                        for (let j = 1; j < num1; j++) {
-                            result += nums[i] * 1
-                        }
+                        result *= num1
                         break;
                     case "/":
                         if (confirm("除法不会写!!需要帮你跳转其它计算器么"))
@@ -240,7 +239,11 @@
 
         }
     }
-
+    function Clear() {
+        init()
+        print.innerHTML = "0";
+        oldResult.innerHTML = result;
+    }
     function con() {
         console.log("！！~~~~~~~~~~~~~~~~~~~~！！")
         console.log("num：" + num)
