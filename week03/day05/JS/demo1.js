@@ -89,6 +89,7 @@ new Vue({
             this.numNew = 0;
             this.operVar = "";
             this.num = 0;
+            this.numDis = false;
         }
     }
 })
