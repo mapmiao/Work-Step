@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="./CSS/demo4.css">
+</head>
+<body>
+<div id="root">
+    <div class="header">
+        <div>
+            <div class="logo">
+                <img src="./images/demo4_logo.png" alt="">
+            </div>
+            <div class="headerNav">
+                <ul>
+                    <li v-for="item in headerNav" :key="item.id" :class="item.headerCC"><a href="">{{item.title}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="slideshow">
+            <ul>
+                <li v-for="item in slideshow" :key="item.id"><img :src="item.src" alt=""></li>
+            </ul>
+
+
+        </div>
+    </div>
+
+</div>
+<script>
+    let vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                headerNav: [
+                    // id名，内容，点击后添加的 Class 名
+                    {id: 1, title: "首页", clickClass: "headerCC"},
+                    {id: 2, title: "关于我们"},
+                    {id: 3, title: "案例展示"},
+                    {id: 4, title: "服务内容"},
+                    {id: 5, title: "新闻中心"},
+                    {id: 6, title: "联系我们"}
+                ],
+                slideshow: [
+                    {id: 1, src: "./images/demo4_slideshow1.png"}
+                ]
+            }
+        },
+        methods: {}
+    })
+</script>
+
+</body>
+</html>

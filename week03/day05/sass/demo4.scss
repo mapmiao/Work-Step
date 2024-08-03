@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  min-width: 100%;
+  overflow: auto;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+// 变量声明
+$bgColor: #ffffff; // 背景颜色
+$fontsize: 1.32vw; // 字体大小
+$sizePadding: $fontsize;
+
+
+//混合样式
+@mixin flex {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+//媒体查询
+@media screen {
+  html, body, #root {
+    @media (max-width: 820px){
+      width: 100%;
+    }
+  }
+}
+
+//主体框架
+//头部通栏 header
+.header {
+  width: max-content;
+  min-width: 100%;
+  //height: auto;
+  background: $bgColor;
+  box-shadow: 0 3px 3px #bfbfbf;
+
+  & > div {
+    padding: $fontsize 10%;
+    @include flex;
+  }
+  & .logo img {
+    width: $fontsize * 13;
+  }
+
+  & .headerNav ul {
+    @include flex;
+    & li a {
+      padding: 0 $sizePadding $sizePadding;
+      font-size: $fontsize;
+      &:hover, &.headerCC {
+        color: red;
+      }
+    }
+  }
+}
+
+//页面内容content
+
+//轮播 slideshow
+.slideshow {
+   img {
+     width: 100%;
+   }
+}
