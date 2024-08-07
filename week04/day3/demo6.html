@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        html {
+            background: #ff6ab5;
+        }
+
+        #root {
+            max-width: 1270px;
+            margin: 10px auto;
+            text-align: center;
+            position: relative;
+        }
+
+        #root > p {
+            padding-right: 8vw;
+            text-align: right;
+        }
+
+        #root > div {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .student {
+            width: 100px;
+            height: 35px;
+            margin: 5px;
+            background: #faebd7;
+
+            span {
+                line-height: 30px;
+            }
+        }
+
+        button {
+            width: 80px;
+            height: 40px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <h1>随机点名系统</h1>
+    <p id="date"></p>
+    <div>
+        <div class="student" v-for="item in person"><span>{{item}}</span></div>
+    </div>
+    <button @click="btn">点名</button>
+</div>
+<script>
+    let SRandom
+    // student
+    let time
+    new Vue({
+        el: "#root",
+        data() {
+            return {
+                person: ["胡桂岭", "王年硕", "周笑天", "刘亚林", "李鑫", "范耀文", "梅晓东", "胡凯恩", "潘俊辉", "肖钇名", "赵锦", "郑佳宁", "张超", "陈洋", "翟欣", "刘永赛", "陈子豪", "王逸龙", "丁珂迪", "陈相羽", "李昂", "苗奥鹏", "陈相伯", "王旭戈", "庞杰", "王前程", "刘锦荷", "陈秋红", "潘妍", "骆祥云", "贾燕春", "施艺博", "邓坤鹏", "高老板"],
+                studentLast: 0,
+                time: null,
+                date: 0,
+                dis: false,
+            }
+        },
+        methods: {
+            Date() {
+                this.date = new Date()
+            },
+            btn() {
+                let student = document.getElementsByClassName("student");
+                let studentLast = 0
+                if (!this.dis) {
+                    this.dis = true
+
+                    this.time = setInterval(function () {
+                        student[studentLast].style.background = "#faebd7"
+                        SRandom = parseInt(Math.random() * student.length)
+                        studentLast = SRandom
+                        student[SRandom].style.background = "red"
+                    }, 100)
+                    if (SRandom) {
+                        console.log(student[SRandom])
+                        console.log("ok")
+                        student[SRandom].style.background = "#faebd7"
+                    }
+                } else {
+                    this.dis = false
+                    clearInterval(this.time)
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
