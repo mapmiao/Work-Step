@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>切换图片</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #root {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .ul_1 {
+            margin: 50px auto 0;
+            width: 500px;
+            height: 400px;
+            overflow: hidden;
+            float: left;
+
+            & li {
+                width: 500px;
+                height: 400px;
+                background: yellowgreen;
+                display: none;
+            }
+
+            & .li_1 {
+                display: block;
+            }
+        }
+
+        .ul_2 {
+            margin: 0 auto;
+            width: 500px;
+            display: flex;
+
+            & li {
+                width: 100px;
+                height: 100px;
+                background: yellow;
+                border: 1px solid #000000;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <ul class="ul_1">
+        <li class="li_1"><img alt="" src="">图1</li>
+        <li class="li_1"><img alt="" src="">图2</li>
+        <li class="li_1"><img alt="" src="">图3</li>
+        <li class="li_1"><img alt="" src="">图4</li>
+        <li class="li_1"><img alt="" src="">图5</li>
+
+    </ul>
+    <ul class="ul_2">
+        <li class="li_2"></li>
+        <li class="li_2"></li>
+        <li class="li_2"></li>
+        <li class="li_2"></li>
+        <li class="li_2"></li>
+    </ul>
+</div>
+
+<script>
+    let li_1 = Array.from(document.getElementsByClassName('li_1'))
+    let li_2 = Array.from(document.getElementsByClassName('li_2'))
+
+    let num = 0
+    li_2.forEach((ele, inx) => {
+        ele.onclick = () => {
+
+            li_1[num].className = ''
+            li_1[inx].className = 'li_1'
+
+            num = inx
+        }
+    })
+
+
+</script>
+
+</body>
+</html>

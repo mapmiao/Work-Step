@@ -1,0 +1,152 @@
+$fColor1: #65b7fc;
+$fColor2: #000000;
+$bgColor: rgba(255, 255, 255, 0.54);
+* {
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+html {
+  background: $fColor1;
+}
+
+.f1 {
+  background: $fColor1;
+  color: #000000;
+
+  #fn {
+    color: #e0e0e0;
+  }
+}
+
+.f2 {
+  background: $fColor2;
+  color: #ffffff;
+
+  #fn {
+    color: #ffffff;
+  }
+}
+
+@mixin button($bg) {
+  background: $bg;
+  outline: none;
+  border: none;
+}
+
+#particles-js {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1000;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+
+}
+
+#root {
+  position: relative;
+  width: 800px;
+  height: 500px;
+  border-radius: 10px;
+  margin: 100px auto;
+  padding: 20px;
+  background: $bgColor;
+  display: flex;
+
+  & .mainImg {
+    width: 40%;
+    border-radius: 10px;
+    background-image: url("../img/demo1_2.png");
+  }
+}
+
+.main {
+  width: 60%;
+
+  & h1 {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  & .top {
+    text-align: center;
+    width: 80%;
+    margin: 30px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & label {
+      padding: 15px;
+
+      & .getText {
+        height: 30px;
+        width: 220px;
+        padding-left: 15px;
+        @include button($bgColor);
+      }
+    }
+
+    & .loginBtn {
+      width: 300px;
+      height: 80px;
+      margin-top: 30px;
+      @include button($bgColor);
+      font-size: 1.5em;
+      color: #474747;
+    }
+
+    & .content {
+      width: 100%;
+      height: 50px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      & .get_acc {
+        font-size: 0.8em;
+        color: red;
+        cursor: pointer;
+      }
+    }
+    a {
+      text-decoration: none;
+      color: #ff0000;
+    }
+  }
+
+  & .mainAlert {
+    padding: 0;
+  }
+
+  & .alert {
+    display: none;
+    position: absolute;
+    width: 150px;
+    height: auto;
+    background-color: rgb(222, 184, 135);
+    padding: 5px;
+    color: #ff0000;
+    bottom: 180px;
+    right: 230px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+#fn {
+  @include button(none);
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 2em;
+}
+
+#mainGet_acc {
+  display: none;
+}
+
