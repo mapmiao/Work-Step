@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo4</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            text-align: center;
+        }
+        img {
+            width: 100%;
+        }
+        ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        li {
+            margin: 10px;
+            width: 18%;
+            text-align: center;
+            position: relative;
+        }
+        div {
+            margin: 0 auto;
+            width: 80%;
+        }
+        li .boxShadow::after,
+        li .boxShadow::before {
+            width: 50%;
+            height: 20%;
+            content: "";
+            position: absolute;
+            z-index: -1;
+
+            bottom: 28px;
+            box-shadow: 0 5px 1px rgb(176, 176, 176);
+            left: 24px;
+            transform: rotate(-3deg);
+        }
+        li .boxShadow::before {
+            left: 86px;
+            transform: rotate(3deg);
+        }
+
+
+    </style>
+</head>
+<body>
+<div>
+    <h2>TA们的优秀作品</h2>
+    <ul id="root" class="res">
+        <li v-for="items in shopping" :key="items.id">
+            <div class="boxShadow"><img alt="" v-bind:src="items.images"/></div>
+            <p>{{items.name}}</p>
+        </li>
+
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            shopping: [
+                {id: 1, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 2, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 3, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 4, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 5, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 6, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 7, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 8, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 9, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 10, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 11, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 12, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 13, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 14, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"},
+                {id: 15, images: "images/屏幕截图 2024-07-19 094924.png", name: "黄金四不要"}
+            ]
+
+        }
+    })
+</script>
+
+</body>
+</html>

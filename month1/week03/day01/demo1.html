@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="./CSS/demo1.css">
+</head>
+<body>
+<div id="root">
+    <div class="header">
+        <div class="headerLeft">
+            <img alt="" src="https://www.baidu.com/img/flexible/logo/pc/result.png">
+        </div>
+        <div class="headerRight">
+            <ul>
+                <li v-for="item in top"><a href="">{{item}}</a></li>
+            </ul>
+            <ul>
+                <li>
+                    <label>
+                        <input type="text" placeholder="正在热搜：因为国务院机构改革">
+                        <button>百度一下</button>
+                    </label>
+                </li>
+                <li><a href="">帮助</a></li>
+                <li><a href="">反馈</a></li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="nav"></div>
+    <div class="content">
+
+    </div>
+</div>
+<script>
+    let vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                top: ["新闻","网页","风云榜","贴吧","知道","音乐","图片","视频","地图","指数"]
+            }
+        },
+        methods: {}
+    })
+</script>
+
+</body>
+</html>

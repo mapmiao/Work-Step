@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo4</title>
+    <Style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+/*Left*/
+    /*top*/
+        .navLeft, .navRight {
+            width: 50%;
+            float: left;
+        }
+        .topLeft {
+            width: 100%;
+            height: 266px;
+            background: #fd1d00;
+        }
+        .topLeft > p {
+            font-size: 20px ;
+            color: white;
+        }
+        .topLeft > p:nth-of-type(1) {
+            padding-left: 47%;
+            padding-top: 100px;
+        }
+        .topLeft > p:nth-of-type(2) {
+            padding-left: 49%;
+            margin-top: 4px;
+        }
+
+        /*bottom*/
+        .bottomLeft {
+            height: 266px;
+        }
+        .bottomLeft > p {
+            font-size: 22px;
+
+        }
+        .bottomLeft > p:nth-of-type(1) {
+            padding-left: 50%;
+            padding-top: 17%;
+        }
+
+        .bottomLeft > p:nth-of-type(2) {
+            padding-left: 49%;
+            margin-top: 4px;
+        }
+
+    /*right*/
+        /*top*/
+        .topRight {
+            height: 266px;
+            padding: 20px 60px;
+            box-sizing: border-box;
+        }
+        .topRight h3 {
+            color: #fc2a0e;
+            line-height: 60px;
+            font-weight: 500;
+        }
+        .topRight p {
+            font-size: 12px;
+            line-height: 2.5em;
+        }
+
+            /*bottom*/
+        .bottom {
+            background: #21282e;
+        }
+        .imgText h1 {
+            color: #ffffff;
+            text-align: center;
+        }
+        .imgText h1:nth-of-type(1) {
+            margin-top: 33%;
+        }
+
+
+
+
+/*img*/
+        img {
+            width: 100%;
+        }
+        .imgBox {
+            width: 50%;
+            float: left;
+        }
+/*清除浮动影响*/
+        .clear::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+
+    </Style>
+</head>
+<body>
+<div id="root">
+    <div class="navLeft">
+        <div class="topLeft">
+            <p>WE LOVE DOING</p>
+            <p>WHAT WE DO</p>
+        </div>
+        <div class="centerLeft clear">
+            <div class="imgBox">
+                <img src="./images/demo2_2.png" alt="">
+            </div>
+            <div class="imgBox">
+                <img src="./images/demo2_3.png" alt="">
+            </div>
+        </div>
+        <div class="bottomLeft">
+            <p>创新是非常重要的</p>
+            <p>让它成为真正的重点</p>
+        </div>
+    </div>
+    <div class="navRight">
+        <div class="topRight">
+            <h3>玩出的作品 玩出的精彩</h3>
+            <p>
+                我们不介意你是否美术或设计班，是否有这证书那资格......<br>
+                你的作品集才是唯一证明你实例的途径 广告、插图、平面设计、摄影、网页设计<br>
+                等各类作品都可以。<br>
+                如果你爱设计、有出众的美感和过剩的灵感 而且一直勤奋地制作了大量作品。<br>
+                那么，你很可能就是我们再找的人
+            </p>
+        </div>
+        <div class="clear bottom">
+            <div class="imgBox imgText">
+                <h1>做聪明的人</h1>
+                <h1>和简单的人</h1>
+            </div>
+            <div class="imgBox">
+                <img src="./images/demo2_7.png" alt="">
+            </div>
+            <div class="imgBox">
+                <img src="./images/demo2_8.png" alt="">
+            </div>
+            <div class="imgBox">
+                <img src="./images/demo2_9.png" alt="">
+            </div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

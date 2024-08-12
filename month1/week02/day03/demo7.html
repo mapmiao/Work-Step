@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo4</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+    <link href="./CSS/demo7.css" rel="stylesheet">
+</head>
+<body>
+<div id="root">
+    <div class="header">
+        <div class="headerM">
+            <div class="leftHeader">
+                <a href="#"><img alt="" class="Logo" src="./images/demo7_logo.png"></a>
+            </div>
+            <div class="rightHeader">
+                <ul>
+                    <li class="liHeader" v-for="tops in top"><span>{{tops}}</span></li>
+                </ul>
+                <label>
+                    <input placeholder="Google站内搜索..." type="text">
+                </label>
+            </div>
+
+        </div>
+    </div>
+    <div class="topNav">
+        <div>
+            <ul>
+                <li class="liNav" v-for="navs in nav">
+                    <a href="#">{{navs}}</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="main">
+        <div class="main_focus">
+            <ul class="focus focusA">
+                <li class="focus_li" v-for="img in images" :key="img.id" :class="img.className">
+                    <a href="">
+                        <img :src="img.image" alt="">
+                    </a>
+                </li>
+            </ul>
+            <ul class="focus_a">
+                <li class="ia"></li>
+                <li class="ia"></li>
+                <li class="ia"></li>
+            </ul>
+        </div>
+
+        <div class="com_news">
+            <ul class="news clear">
+                <li class="news_li" v-for="news in domNew" :key="news.id">
+                    <a href="">
+                        <div class="textImg">
+                            <img alt="" :src="news.image">
+                        </div>
+                        <div class="text">
+                            <h4>{{news.title}}</h4>
+                            <span>{{news.data}}</span>
+                            <p>{{news.text}}</p>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script>
+    new Vue({
+        el: "#root",
+        data() {
+            return {
+                nav: ["首页", "公司简介", "产品展示", "企业展示", "新闻中心", "科睿文摘", "联系我们"],
+                top: ["中文", "English", "加入收藏", "设为首页"],
+                images: [
+                    {id: 1, image: "./images/demo7_1.png", className: "focus_img"},
+                    {id: 2, image: "./images/demo7_2.png", className: "focus_img"},
+                    {id: 3, image: "./images/demo7_3.png", className: "focus_img"},
+                    {id: 4, image: "./images/demo7_1.png", className: "focus_img_end"},
+                ],
+                domNew: [
+                    {id: 1, image: "./images/demo7_new.png", title: "网站建设网站建设解决方案", data: "2017-05-31", text: "网站建设网站建设解决方案"},
+                    {id: 2, image: "./images/demo7_new.png", title: "网站建设网站建设解决方案", data: "2017-05-31", text: "网站建设网站建设解决方案"},
+                    {id: 3, image: "./images/demo7_new.png", title: "网站建设网站建设解决方案", data: "2017-05-31", text: "网站建设网站建设解决方案"},
+                    {id: 4, image: "./images/demo7_new.png", title: "网站建设网站建设解决方案", data: "2017-05-31", text: "网站建设网站建设解决方案"},
+                    {id: 5, image: "./images/demo7_new.png", title: "网站建设网站建设解决方案", data: "2017-05-31", text: "网站建设网站建设解决方案"},
+                    {id: 6, image: "./images/demo7_new.png", title: "网站建设网站建设解决方案", data: "2017-05-31", text: "网站建设网站建设解决方案"},
+                    {id: 7, image: "./images/demo7_new.png", title: "网站建设网站建设解决方案", data: "2017-05-31", text: "网站建设网站建设解决方案"},
+                    {id: 8, image: "./images/demo7_new.png", title: "网站建设网站建设解决方案", data: "2017-05-31", text: "网站建设网站建设解决方案"},
+                ]
+            }
+        },
+        methods: {}
+
+    })
+
+    let focus = document.getElementsByClassName("focus");
+    let ia = document.getElementsByClassName("ia");
+
+    // 初始默认给第一个添加样式
+    ia[0].className = "focus_moveLi ia";
+    let index = 0
+
+    let Left = 0;
+
+    function timer() {
+        Left = Left - 4;
+        let stop = (Left % 1200 === 0) ? 1200 : 1;
+        if (stop === 1200) {
+            console.log("index：" + index)
+            index++
+            for (let j = 0; j < ia.length; j++) {
+                console.log("这是index循环")
+                console.log(j)
+                if (j === index)
+                    ia[j].className = "focus_moveLi ia";
+                else
+                    ia[j].className = "ia";
+
+            }
+            if (index === 2) index = -1;
+        }
+        // 轮播小方块
+
+
+        console.log(stop)
+        // 轮播图片
+        setTimeout(timer, stop);
+        focus[0].style.marginLeft = Left + "px";
+
+        // 当当前展示图片为最后一张时把前面图片后移
+        if (Left <= -3600) Left = 0;
+
+    }
+
+    setTimeout(timer, 1200);
+
+
+</script>
+</body>
+</html>
