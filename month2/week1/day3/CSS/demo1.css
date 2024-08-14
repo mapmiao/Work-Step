@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+#root {
+  margin: 50px auto;
+  display: flex; }
+  #root div {
+    border: 50px solid red; }
+  #root div:nth-child(2) {
+    border: 50px solid #00aaff;
+    border-left-color: red; }
+  #root div:nth-child(3) {
+    border: 50px solid magenta;
+    border-left-color: #00aaff; }
+  #root div:nth-child(4) {
+    border: 50px solid #ffaa00;
+    border-left-color: magenta; }
+  #root div:nth-child(5) {
+    border: 50px solid #00ff55;
+    border-left-color: #ffaa00; }
+  #root div:nth-child(6) {
+    border: 50px solid blue;
+    border-left-color: #00ff55; }
+  #root div:nth-child(7) {
+    border: 50px solid #ff0055;
+    border-left-color: blue;
+    border: 50px solid transparent;
+    border-left-color: blue; }
+
+/*# sourceMappingURL=demo1.css.map */

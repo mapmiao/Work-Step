@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$bgColor: red;
+#root {
+  margin: 50px auto;
+  display: flex;
+
+  & div {
+    border: 50px solid red;
+  }
+  $bgColorOld: red;
+  @for $i from 2 through 7 {
+    & div:nth-child(#{$i}) {
+      border: 50px solid adjust-hue($bgColor, $i * 100);
+      border-left-color: $bgColorOld;
+      @if ($i == 7) {
+        border: 50px solid transparent;
+        border-left-color: $bgColorOld;
+      }
+      $bgColorOld: adjust-hue($bgColor, $i * 100);
+    }
+  }
+}
