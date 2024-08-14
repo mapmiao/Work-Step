@@ -7,26 +7,32 @@
   margin: 50px auto;
   display: flex; }
   #root div {
-    border: 50px solid red; }
-  #root div:nth-child(2) {
-    border: 50px solid #00aaff;
+    border-style: solid;
+    border-width: 50px 30px;
+    border-color: #ff0008;
+    border-left-color: transparent; }
+  #root div:nth-child(1) {
+    border-color: #ffa200;
     border-left-color: red; }
+  #root div:nth-child(2) {
+    border-color: #b2ff00;
+    border-left-color: #ffa200; }
   #root div:nth-child(3) {
-    border: 50px solid magenta;
-    border-left-color: #00aaff; }
+    border-color: #08ff00;
+    border-left-color: #b2ff00; }
   #root div:nth-child(4) {
-    border: 50px solid #ffaa00;
-    border-left-color: magenta; }
+    border-color: #00ffa2;
+    border-left-color: #08ff00; }
   #root div:nth-child(5) {
-    border: 50px solid #00ff55;
-    border-left-color: #ffaa00; }
+    border-color: #00b2ff;
+    border-left-color: #00ffa2; }
   #root div:nth-child(6) {
-    border: 50px solid blue;
-    border-left-color: #00ff55; }
+    border-color: #0008ff;
+    border-left-color: #00b2ff; }
   #root div:nth-child(7) {
-    border: 50px solid #ff0055;
-    border-left-color: blue;
-    border: 50px solid transparent;
-    border-left-color: blue; }
+    border-color: #a200ff;
+    border-left-color: #0008ff;
+    border-color: transparent;
+    border-left-color: #0008ff; }
 
 /*# sourceMappingURL=demo1.css.map */

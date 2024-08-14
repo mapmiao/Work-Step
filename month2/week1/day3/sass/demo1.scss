@@ -4,24 +4,31 @@
   box-sizing: border-box;
 }
 
-$bgColor: red;
+$bgColor: #ff0008;
 #root {
   margin: 50px auto;
   display: flex;
 
   & div {
-    border: 50px solid red;
+    border-style: solid;
+    border-width: 50px 30px;
+    border-color: $bgColor;
+    border-left-color: transparent;
   }
+
   $bgColorOld: red;
-  @for $i from 2 through 7 {
+  @for $i from 1 through 7 {
+    $colorNew: adjust-hue($bgColor, $i * 40);
     & div:nth-child(#{$i}) {
-      border: 50px solid adjust-hue($bgColor, $i * 100);
+      border-color: $colorNew;
       border-left-color: $bgColorOld;
+
       @if ($i == 7) {
-        border: 50px solid transparent;
+        border-color: transparent;
         border-left-color: $bgColorOld;
       }
-      $bgColorOld: adjust-hue($bgColor, $i * 100);
+      $bgColorOld: $colorNew;
     }
   }
+
 }
