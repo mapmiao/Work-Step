@@ -332,7 +332,7 @@ header {
         display: flex;
         justify-content: space-between;
         line-height: 4vh;
-        color: #8989a3;
+        color: #767676;
 
         &:hover {
           color: red;
@@ -350,6 +350,9 @@ header {
       margin-top: 20px;
       padding: 10px;
       border-radius: 5px;
+      & a {
+        color: white;
+      }
     }
   }
 }

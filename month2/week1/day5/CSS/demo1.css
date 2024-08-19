@@ -227,7 +227,7 @@ header {
       display: flex;
       justify-content: space-between;
       line-height: 4vh;
-      color: #8989a3; }
+      color: #767676; }
       .content_news .news ul a:hover {
         color: red;
         font-size: 1.1rem; }
@@ -238,6 +238,8 @@ header {
       margin-top: 20px;
       padding: 10px;
       border-radius: 5px; }
+      .content_news .news .btn button a {
+        color: white; }
 
 footer {
   height: 14vh;

@@ -160,6 +160,32 @@ input {
 }
 .main_focus {
     height: 358px;
+    position: relative;
+    & span {
+        width: 30px;
+        height: 30px;
+        display: block;
+        font-size: 30px;
+        color: white;
+        line-height: 30px;
+        position: absolute;
+        top: calc((100% - 30px) / 2);
+        background-color: rgba(80, 80, 80, 0.4);
+        text-align: center;
+        z-index: 1;
+    }
+    & span:nth-child(1) {
+        left: 0;
+        border-top-right-radius: 100%;
+        border-bottom-right-radius: 100%;
+    }
+
+    & span:nth-child(2) {
+        content: '>';
+        right: 0;
+        border-top-left-radius: 100%;
+        border-bottom-left-radius: 100%;
+    }
 }
 .focus {
     width: 400%;

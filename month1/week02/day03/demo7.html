@@ -38,7 +38,7 @@
     <div class="main">
         <div class="main_focus">
             <ul class="focus focusA">
-                <li class="focus_li" v-for="img in images" :key="img.id" :class="img.className">
+                <li :class="img.className" :key="img.id" class="focus_li" v-for="img in images">
                     <a href="">
                         <img :src="img.image" alt="">
                     </a>
