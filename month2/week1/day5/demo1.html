@@ -7,6 +7,7 @@
     <link href="./CSS/demo1.css" rel="stylesheet">
 </head>
 <body>
+<div id="a"></div>
 <div id="root">
     <header>
         <div class="header">
@@ -84,9 +85,9 @@
                     <h3>{{items.title}}</h3>
                     <ul>
                         <li v-for="item in items.texts" :key="item.id">
-                            <span>{{item.new}}</span><span>{{item.time}}</span>
+                            <a href=""><span>{{item.new}}</span><span>{{item.time}}</span></a>
                         </li>
-                        <li class="btn"><button>MORE INFO →</button></li>
+                        <li class="btn"><button><a href="#a">MORE INFO →</a></button></li>
                     </ul>
                 </li>
             </ul>
@@ -107,6 +108,6 @@
     <p>Copyright©2002-2015上海机械设备服务有限公司 版权所有Power by DedeCms</p>
     <p>电话:15918779820 E-mail:89898981@qq.com地址:上海市沙河广园东路1858新天地服装城</p>
 </footer>
-<script src="./js/demo1.js"></script>
+<script src="./demo1.js"></script>
 </body>
 </html>

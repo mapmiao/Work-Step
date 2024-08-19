@@ -144,5 +144,8 @@ let vm = new Vue({
             ]
         }
     },
-    methods: {}
+    methods: {
+        a () {
+        }
+    }
 })
