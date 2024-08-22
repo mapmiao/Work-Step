@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <link href="./CSS/demo1.css" rel="stylesheet">
+</head>
+<body>
+<div id="root">
+    <div class="header">
+        <div>{{result}}{{numOld}}&nbsp;{{operVar}}</div>
+        <div>{{numNew}}</div>
+    </div>
+    <div class="content">
+        <div v-for="item in val">
+            <button :value="item" @click="valClick(item)">{{item}}</button>
+        </div>
+    </div>
+
+</div>
+<script src="./JS/demo1.js"></script>
+
+</body>
+</html>

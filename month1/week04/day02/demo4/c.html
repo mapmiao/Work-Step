@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>c页面</title>
+</head>
+<body>
+<div id="root">
+
+    <button id="forwardB" onclick="forwardB()">点击返回到上一个页面</button>
+    <button id="backB" onclick="backB()">点击前进到下一个页面</button>
+    <a href="./b.html">点击转到b页面</a>
+    <a href="./a.html">点击转到a页面</a>
+</div>
+<script>
+
+    function forwardB() {
+        console.log(history)
+        history.forward();
+        console.log("468513");
+    }
+
+    function backB() {
+        history.back();
+    }
+
+</script>
+
+</body>
+</html>

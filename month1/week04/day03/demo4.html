@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #root {
+            width: 160px;
+            height: 239px;
+            background-image: url("./img/pic1.jpg");
+            background-position: -164px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="root">
+
+</div>
+<button onclick="kai()">开灯</button>
+<button onclick="guan()">关灯</button>
+<script>
+    let buttons = document.querySelectorAll("button")
+    let root = document.querySelector("#root")
+    buttons[0].disabled = true
+
+    function kai() {
+        buttons[0].disabled = true
+        root.style.backgroundPosition = "-164px"
+        buttons[1].disabled = false
+    }
+
+    function guan() {
+        buttons[1].disabled = true
+        root.style.backgroundPosition = "0"
+        buttons[0].disabled = false
+    }
+
+</script>
+
+</body>
+</html>
