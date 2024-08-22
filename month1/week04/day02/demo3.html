@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="root">
+    <label>
+        <input id="str" placeholder="百度一下" type="text">
+    </label>
+    <button onclick="search()">点击搜索</button>
+</div>
+<script>
+    function search() {
+        location.href = "https://www.baidu.com/s?&wd=" + str.value
+    }
+</script>
+
+</body>
+</html>
