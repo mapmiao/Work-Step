@@ -4,7 +4,7 @@ const {query} = require("express");
 const connection = mysql2.createConnection({
     host: 'localhost',
     user: 'root',
-    password: 'miao200206136510',
+    password: '',
     database: 'works'
 })
 
