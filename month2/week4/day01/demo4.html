@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<body>
+<input type="number" id="getNumArray" value="5">
+<button onclick="getArray()">随机生成一个数组</button>
+<input type="radio" value="" name="sortord" checked>从小到大
+<input type="radio" value="" name="sortord">从大到小
+<button onclick="bubbleSort()">进行冒泡排序</button>
+<button onclick="selectionSort()">进行冒泡排序</button>
+
+<div id="root">
+    <span id="getRandomArray_span"></span>
+    <p id="result"></p>
+
+</div>
+<script>
+    let getRandomArray = [];
+    let getRandom_bool = false;
+    const result = document.getElementById("result");
+
+    // 将 Array 打印到 ele 中
+    function printf(Array, ele) {
+        for (let i = 0; i < Array.length; i++) {
+            ele.innerHTML += Array[i];
+            if (i !== Array.length - 1)
+                ele.innerHTML += '，';
+        }
+    }
+
+    // 生成随机数组
+    function getArray() {
+        getRandom_bool = true;
+        getRandomArray = [];
+        const getNumArray = document.getElementById('getNumArray').value * 1;
+        const getRandomArray_span = document.getElementById('getRandomArray_span');
+
+        console.log(getNumArray)
+        getRandomArray_span.innerHTML = '随机数组为：';
+        for (let i = 0; i < getNumArray; i++) {
+            let places = '1'
+            for (let j = 0; j < Math.trunc(Math.random() * 10); j++) {
+                places += '0'
+            }
+            getRandomArray.push(Math.trunc(Math.random() * (places * 1)));
+        }
+
+        printf(getRandomArray, getRandomArray_span)
+    }
+
+    // 获取排序方式
+    function sort() {
+        const sortord = document.getElementsByName('sortord');
+        for (let i = 0; i < sortord.length; i++) {
+            if (sortord[i].checked === true)
+                return i; // i 为 0 表示从小到大排序，i 为 1 表示从大到小排序
+        }
+    }
+
+    // 初始化排序
+    function initSort() {
+        result.innerHTML = ''; // 清空 结果ele 数据
+        if (!getRandom_bool) { // 当没有生成数据时 生成数据
+            getArray();
+            getRandom_bool = true;
+        }
+    }
+
+    // 冒泡排序
+    function bubbleSort() {
+        initSort()
+        for (let i = 0; i < getRandomArray.length; i++) {
+            for (let j = 0; j < getRandomArray.length - 1 - i; j++) {
+                if (sort() === 0) { // 从小到大排序
+                    if (getRandomArray[j] > getRandomArray[j + 1])
+                        [getRandomArray[j], getRandomArray[j + 1]] = [getRandomArray[j + 1], getRandomArray[j]];
+                } else { // 从大到小排序
+                    if (getRandomArray[j] < getRandomArray[j + 1])
+                        [getRandomArray[j], getRandomArray[j + 1]] = [getRandomArray[j + 1], getRandomArray[j]];
+                }
+            }
+        }
+        printf(getRandomArray, result);
+    }
+
+    // 选择排序
+    function selectionSort() {
+        initSort();
+        let select = { // 存取最小/大的数，以及索引值
+            Num: null,
+            index: null
+        };
+        for (let i = 0; i < getRandomArray.length; i++) {
+            select.Num = getRandomArray[i];
+            select.index = i
+            for (let j = i + 1; j < getRandomArray.length; j++) {
+                if (sort() === 0) { // 从小到大排序
+                    if (select.Num > getRandomArray[j]) {
+                        select.Num = getRandomArray[j]
+                        select.index = j
+                    }
+                } else { // 从大到小排序
+                    if (select.Num < getRandomArray[j]) {
+                        select.Num = getRandomArray[j]
+                        select.index = j
+                    }
+                }
+            }
+            getRandomArray.splice(select.index, 1);
+            getRandomArray.splice(i, 0, select.Num);
+        }
+        printf(getRandomArray, result);
+    }
+</script>
+
+</body>
+</html>

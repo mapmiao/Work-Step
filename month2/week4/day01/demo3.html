@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<body>
+<button onclick="fn()">随机生成一个数字并计算</button>
+<span id="number"></span>
+
+<div id="root">
+
+</div>
+<script>
+    const root = document.getElementById('root');
+    const number = document.getElementById('number');
+
+    function myRandom() {
+        const num = '' + Math.floor(Math.random() * 10000)
+        number.innerHTML = num;
+        return num;
+    }
+
+    function fn() {
+        let num = myRandom();
+        let num_zero = 1;
+        root.innerHTML = '这个数字共有' + num.length + '位' + '<br/>';
+        for (let i = 0; i < num.length; i++) {
+            num_zero += '0'
+            console.log(num_zero, i);
+            root.innerHTML += '第' + (i + 1) + '位是：' + num[num.length - 1 - i];
+
+            if (i !== num.length - 1)
+                root.innerHTML += '，';
+            else
+                root.innerHTML += '。';
+
+        }
+    }
+
+</script>
+
+</body>
+</html>
