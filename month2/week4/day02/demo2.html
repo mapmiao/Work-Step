@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #root {
+            margin: 15px 20px;
+            padding: 5px 20px;
+            gap: 25px;
+            width: max-content;
+            display: flex;
+            justify-content: center;
+            border: 1px solid #e1e1e1;
+
+            & div > span {
+                line-height: 30px;
+                color: #35363a;
+                user-select: none;
+            }
+        }
+
+        input {
+            height: 30px;
+            border: none;
+            outline: none;
+        }
+
+        #verify_code {
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div>
+        <span>验&emsp;证&emsp;码</span></div>
+    <div>
+        <form action="">
+            <input type="text" placeholder="请输入验证码">
+        </form>
+    </div>
+    <div onclick="getVerifyCode()">
+        <span id="verify_code"></span>
+    </div>
+</div>
+<script>
+    const verify_code = document.getElementById('verify_code');
+
+    function getVerifyCode() {
+        let verifyCode = ''
+        for (let i = 0; i < 4; i++) {
+            let codeType = Math.round(Math.random());
+            if (codeType === 0) {
+                verifyCode += getNumber();
+            } else {
+                verifyCode += String.fromCharCode(getLetter());
+            }
+        }
+        verify_code.innerHTML = verifyCode;
+    }
+
+    function getNumber() {
+        return Math.trunc(Math.random() * 10);
+    }
+
+    function getLetter() {
+        if (Math.round(Math.random())) {
+            return Math.trunc((Math.random() * 25) + 65)
+        } else {
+            return Math.trunc((Math.random() * 25) + 97)
+        }
+    }
+    getVerifyCode()
+
+</script>
+
+</body>
+</html>
