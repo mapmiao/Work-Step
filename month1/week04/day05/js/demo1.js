@@ -19,7 +19,7 @@ let vm = new Vue({
     },
     methods: {
 
-        // 建立新的 div>img
+        // 建立新的 div>images
         newImg(i) {
             let newBox = document.createElement("div");
             let newImg = document.createElement("img");
@@ -27,7 +27,7 @@ let vm = new Vue({
             newBox.appendChild(newImg);
             return newBox;
         },
-        // 创建新的 div > img 节点
+        // 创建新的 div > images 节点
         addImg() {
             let length = this.images.length;
             for (let i = 0; i < length; i++) {
