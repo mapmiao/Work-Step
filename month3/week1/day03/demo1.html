@@ -11,7 +11,6 @@
         * {
             user-select: none;
         }
-
         .box {
             position: absolute;
             width: 100px;
@@ -23,8 +22,8 @@
 <body>
 <div id="root">
     <button @click="addBox">点击</button>
-    <input type="text" placeholder="宽" class="width1">
-    <input type="text" placeholder="高" class="height1">
+    <input type="number" placeholder="宽" class="width1">
+    <input type="number" placeholder="高" class="height1">
     <input type="color" placeholder="颜色" class="color1">
     <div id="box"></div>
 
@@ -80,7 +79,6 @@
             box.addEventListener('mousedown', that.moveBox)
             document.addEventListener('mouseup', function () {
                 document.removeEventListener('mousemove', that.move)
-                console.log(that.move)
             })
 
         }

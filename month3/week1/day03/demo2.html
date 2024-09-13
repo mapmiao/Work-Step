@@ -18,8 +18,7 @@
             content: '\e770';
             font-size: 20px;
             color: inherit;
-            opacity: 1;
-            transition: all 400ms;
+            user-select: none;
         }
     </style>
 </head>
@@ -57,11 +56,6 @@
             },
             cursorMove(e) {
                 this.addTail(e.clientX, e.clientY)
-                const iContent = document.querySelectorAll(' i.moveTail:before')
-                iContent.forEach((e)=>{
-                    e.style.content = '5+62'
-                })
-
             }
         },
         mounted() {
