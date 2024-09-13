@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo4</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+    <link href="CSS/demo1.css" rel="stylesheet">
+</head>
+<body>
+<div id="root">
+    <div class="main">
+
+        <div class="main_focus">
+            <ul class="focus focusA">
+                <li :class="img.className" :key="img.id" class="focus_li" v-for="img in images">
+                    <img :src="img.image" alt="">
+                </li>
+                <li :class="images[0].className" class="focus_li">
+                    <img :src="images[0].image" alt="">
+                </li>
+            </ul>
+            <ul class="move">
+                <li><span>&lt;</span></li>
+                <li><span>&gt;</span></li>
+            </ul>
+            <ul class="focus_a">
+                <li class="ia"></li>
+                <li class="ia"></li>
+                <li class="ia"></li>
+            </ul>
+        </div>
+
+
+    </div>
+
+</div>
+
+<script>
+    new Vue({
+        el: "#root",
+        data() {
+            return {
+                images: [
+                    {id: 1, image: "./images/demo7_1.png", className: "focus_img"},
+                    {id: 2, image: "./images/demo7_2.png", className: "focus_img"},
+                    {id: 3, image: "./images/demo7_3.png", className: "focus_img"},
+                ],
+            }
+        },
+        methods: {},
+        mounted() {
+
+            let focus = document.getElementsByClassName("focus")[0];
+            let ia = document.getElementsByClassName("ia");
+            const focus_li = document.querySelectorAll('.focus_li')
+            let focusW = parseInt(window.getComputedStyle(focus_li[0]).width)
+
+            // 初始默认给第一个添加样式
+            ia[0].className = "focus_moveLi ia";
+            let index = 1
+            let Left = 0
+            window.onresize = () => {
+                focusW = parseInt(window.getComputedStyle(focus_li[0]).width)
+            }
+
+            function timer() {
+
+                Left = focusW * index
+                index++
+                focus.style.marginLeft = -Left + "px";
+                focus.style.transition = 'all 1s'
+                // 当当前展示图片为最后一张时把前面图片后移
+                if (Left === focusW * (focus_li.length - 1)) {
+                    setTimeout(() => {
+                        focus.style.transition = 'none'
+                        focus.style.marginLeft = "0";
+                    }, 1000)
+                    Left = 0;
+                    index = 1;
+                }
+                if (index > ia.length) {
+                    focus_moveLi(1)
+
+                } else
+                    focus_moveLi(index)
+            }
+
+
+            function focus_moveLi(inx) { // 轮播图下方小方块
+                for (let i = 0; i < ia.length; i++)
+                    ia[i].classList.remove('focus_moveLi')
+                ia[inx - 1].classList.add('focus_moveLi')
+            }
+
+            setInterval(timer, 2000);
+        }
+    })
+
+</script>
+</body>
+</html>
