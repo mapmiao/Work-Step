@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>萤火虫背景特效</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            background-image: url("images/bg.jpg");
+            background-size: 100%;
+        }
+
+        #bg > .fireFly {
+            display: block;
+            position: absolute;
+            background-image: url("images/1.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+
+            transition: all 5s;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+
+</div>
+<div class="bg" id="bg">
+    <!--<i></i>-->
+</div>
+
+
+<script type="module">
+    import {FireFly_bg} from './js/demo.js'
+
+    new FireFly_bg('#bg')
+</script>
+</body>
+</html>
