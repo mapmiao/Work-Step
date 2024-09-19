@@ -18,15 +18,6 @@
             background-size: 100%;
         }
 
-        #bg > .fireFly {
-            display: block;
-            position: absolute;
-            background-image: url("images/1.jpg");
-            background-repeat: no-repeat;
-            background-size: 100%;
-
-            transition: all 5s;
-        }
     </style>
 </head>
 <body>
@@ -41,7 +32,11 @@
 <script type="module">
     import {FireFly_bg} from './js/demo.js'
 
-    new FireFly_bg('#bg')
+    new FireFly_bg({
+        eId: '#bg',
+        bg_img: './images/1.jpg',
+        bg_time: '8'
+    })
 </script>
 </body>
 </html>
