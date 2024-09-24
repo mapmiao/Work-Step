@@ -11,6 +11,9 @@ export class ToDo {
         return document.getElementById(eId);
     }
 
+    /**
+     * 初始化待办事项列表
+     */
     static init() {
         if (localStorage.getItem('ToDoList')) {
             ToDo.ToDoList = JSON.parse(localStorage.getItem('ToDoList'));
@@ -61,6 +64,12 @@ export class ToDo {
     static run() {
         ToDo.init();
         ToDo.addToDo.addEventListener('click', ToDo.add);
+        ToDo.ToDoValue.addEventListener('keyup', (e) => {
+            if (e.keyCode === 13) {
+                ToDo.add()
+            }
+        })
+
 
         ToDo.ToDo_Ul.addEventListener('click', (e) => {
             if (e.target.tagName !== 'BUTTON') return
