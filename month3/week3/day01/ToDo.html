@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4624650_qep591gdyh.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #root {
+
+        }
+
+        #root li {
+            list-style: none;
+        }
+
+        #root > h1 {
+            text-align: center;
+            color: #0a6ebd;
+            margin: 10px 0;
+        }
+
+        #root > div {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #root .ToDoBox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ToDoBox > div {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .getToDo {
+        }
+
+        .getToDo label {
+            display: flex;
+            align-items: center;
+            height: 45px;
+            border: 1px solid #E5E5E5;
+        }
+
+        .getToDo input {
+            box-shadow: 0 0 6px 1px #66666666 inset;
+            background: none;
+            outline: none;
+            border: none;
+            flex: 1;
+            height: 100%;
+            font-size: 16px;
+            padding: 0 20px;
+        }
+
+        .getToDo button {
+            border: 1px solid #3797e3;
+            height: 100%;
+            padding: 0 20px;
+            font-size: 16px;
+            background: #3797e3;
+            color: white;
+        }
+
+        .ToDo ul {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+        }
+
+        .ToDo .ToDoList {
+            width: 100%;
+            padding: 10px 10px;
+            border-bottom: 1px solid #eeeeee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .ToDoList div {
+            display: flex;
+            gap: 15px;
+        }
+
+        .ToDoList button {
+            background: none;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <h1>To Do</h1>
+    <div>
+
+        <div class="ToDoBox">
+            <div id="getToDo" class="getToDo">
+                <label>
+                    <input type="text" id="newToDo" placeholder="点击添加代办">
+                    <button id="addToDo">添加</button>
+                </label>
+            </div>
+            <div id="ToDo" class="ToDo">
+                <ul id="ToDo_Ul" class="ToDo_Ul">
+                    <!--<li class="ToDoList">
+                        <div>
+                            <input type="checkbox" name="" id="">
+                            <p>dasddasd</p>
+                        </div>
+                        <button data-index="1" class="iconfont icon-shanchu"></button>
+                    </li>-->
+                </ul>
+                
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script>
+    class ToDo {
+        static ToDoList = [];
+        static el = 'root';
+
+        static eMain = ToDo.getEleId(ToDo.el);
+        static ToDoValue = ToDo.getEleId('newToDo');
+        static addToDo = ToDo.getEleId('addToDo');
+        static ToDo_Ul = ToDo.getEleId('ToDo_Ul');
+
+        static getEleId(eId) {
+            return document.getElementById(eId);
+        }
+
+        static init() {
+            if (localStorage.getItem('ToDoList')) {
+                ToDo.ToDoList = JSON.parse(localStorage.getItem('ToDoList'));
+            } else {
+                localStorage.setItem('ToDoList', JSON.stringify(ToDo.ToDoList));
+            }
+            ToDo.ToDoList.forEach(v => ToDo.addEle(v))
+        }
+
+        static add() {
+            const data = {
+                id: ToDo.ToDoList.length + 1,
+                ToDo: ToDo.ToDoValue.value,
+            }
+            ToDo.ToDoList.push(data);
+            localStorage.setItem('ToDoList', JSON.stringify(ToDo.ToDoList));
+
+            ToDo.addEle(data)
+        }
+
+        static addEle(data) {
+            if (data.ToDo === '') return
+            const new_li = document.createElement('li');
+            const div = document.createElement('div');
+            const new_input = document.createElement('input');
+            const new_p = document.createElement('p');
+            const new_btn = document.createElement('button');
+
+            new_li.classList.add('ToDoList')
+            new_input.type = 'checkbox';
+            new_p.innerHTML = data.ToDo;
+            new_btn.className = "iconfont icon-shanchu";
+            new_btn.setAttribute('data-index', data.id);
+
+            div.appendChild(new_input);
+            div.appendChild(new_p);
+
+            new_li.appendChild(div);
+            new_li.appendChild(new_btn);
+
+            ToDo.ToDo_Ul.appendChild(new_li);
+            ToDo.ToDoValue.value = ''
+        }
+
+        static del(e) {
+            const index = e.target.dataset.index * 1;
+            ToDo.ToDoList.splice(index - 1, 1);
+
+            ToDo.ToDo_Ul.innerHTML = '';
+            let i = 1;
+            ToDo.ToDoList.forEach(v => {
+                v.id = i++; // 对id进行重新赋值
+            })
+            localStorage.setItem('ToDoList', JSON.stringify(ToDo.ToDoList));
+            console.log(ToDo.ToDoList)
+            ToDo.ToDoList.forEach(v => ToDo.addEle(v)) // 重新渲染页面
+        }
+
+        static run() {
+            ToDo.init();
+            ToDo.addToDo.addEventListener('click', ToDo.add);
+
+            ToDo.ToDo_Ul.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'BUTTON') return
+                ToDo.del(e)
+            })
+
+        }
+    }
+
+    ToDo.run()
+</script>
+
+</body>
+</html>
