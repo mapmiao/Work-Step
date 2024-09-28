@@ -38,12 +38,12 @@ export class ToDo {
         if (data.ToDo === '') return
         ToDo.ToDo_Ul.innerHTML +=
             `<li class="ToDoList">
-                    <div>
-                        <input type="checkbox" name="" id="">
-                        <p>${data.ToDo}</p>
-                    </div>
-                    <button data-index="${data.id}" class="iconfont icon-shanchu"></button>
-                </li>`;
+                <div>
+                    <input type="checkbox" name="" id="">
+                    <p>${data.ToDo}</p>
+                </div>
+                <button data-index="${data.id}" class="iconfont icon-shanchu"></button>
+            </li>`;
         ToDo.ToDoValue.value = '';
     }
 
