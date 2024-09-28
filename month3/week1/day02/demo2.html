@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        nav ul {
+            justify-content: space-between;
+        }
+
+        nav li {
+            flex: 1;
+            line-height: 50px;
+            background: #c5c5c5;
+            text-align: center;
+        }
+
+        .content {
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        .content_ul {
+            width: 100%;
+        }
+
+        .content_ul > li {
+            width: 100%;
+            height: 500px;
+            display: none;
+            background: red;
+            color: white;
+        }
+
+        ul {
+            display: flex;
+            gap: 60px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <nav>
+        <ul>
+            <li onclick="goEle(this.dataset.index)" data-index="0">
+                <p>1</p>
+            </li>
+            <li onclick="goEle(this.dataset.index)" data-index="1">
+                <p>2</p>
+            </li>
+            <li onclick="goEle(this.dataset.index)" data-index="2">
+                <p>3</p>
+            </li>
+            <li onclick="goEle(this.dataset.index)" data-index="3">
+                <p>4</p>
+            </li>
+        </ul>
+    </nav>
+    <div class="content">
+        <ul class="content_ul">
+            <li>
+                <div><h1>1</h1></div>
+            </li>
+            <li>
+                <div><h1>2</h1></div>
+            </li>
+            <li>
+                <div><h1>3</h1></div>
+            </li>
+            <li>
+                <div><h1>4</h1></div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    const content_ul = document.querySelector('.content_ul')
+    const contents_li = content_ul.children
+    contents_li[0].style.display = 'block'
+    console.log(contents_li)
+
+    function goEle(index) {
+        for (let i = 0; i < contents_li.length; i++) {
+            contents_li[i].style.display = 'none'
+        }
+        contents_li[index].style.display = 'block'
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Document</title>
+</head>
+
+<body>
+<div id="root"></div>
+<button onclick="recaptcha()">点击生成验证码</button>
+</body>
+<script>
+function recaptcha() {
+    let recaptcha = '';
+    for (let i = 0; i < 4; i++) {
+        recaptcha += parseInt(Math.random() * 10)
+    }
+    root.innerHTML =  recaptcha;
+}
+</script>
+
+</html>

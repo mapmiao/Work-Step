@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #login {
+            width: max-content;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #password {
+            display: block;
+        }
+
+        #root .cStrength {
+            & > div {
+                padding: 3px;
+                border: 2px solid #e0e0e0;
+                display: grid;
+                grid-template-columns: repeat(3, 40px);
+                grid-template-rows: 8px;
+                gap: 7px;
+                border-radius: 7px;
+            }
+        }
+
+        .cStrength > div > div {
+            background-color: #777777;
+        }
+
+        .strength:first-child {
+            background-color: #f50202;
+            border-bottom-left-radius: 7px;
+            border-top-left-radius: 7px;
+        }
+
+        .strength:nth-child(2) {
+            background-color: #f59c02;
+        }
+
+        .strength:last-child {
+            background-color: #28c40a;
+            border-bottom-right-radius: 7px;
+            border-top-right-radius: 7px;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div id="login">
+        <input type="password" id="password">
+        <div class="cStrength">
+            <div>
+                <div class="strengthBox"></div>
+                <div class="strengthBox"></div>
+                <div class="strengthBox"></div>
+            </div>
+        </div>
+        <span id="spanText" style="font-size: 12px"></span>
+    </div>
+</div>
+<script>
+    const password_ele = document.querySelector('#password');
+    const strengthBox = document.querySelectorAll('.strengthBox');
+    const spanText = document.querySelector('#spanText');
+    let strength = []
+    let num = 0
+    password_ele.addEventListener('input', (e) => {
+        let password = password_ele.value
+        if (e.inputType === 'deleteContentBackward') {
+            inputDelete(password)
+        } else {
+            let ascStr = e.data.charCodeAt(0)
+            if (ascStr >= 48 && ascStr <= 57) strength[0] = true //
+            if (ascStr >= 97 && ascStr <= 122) strength[1] = true
+            if (ascStr >= 65 && ascStr <= 90) strength[2] = true
+        }
+
+        if (password.length < 6) return
+
+        console.log(strength)
+        let m = 0
+        strength.forEach(value => {
+            if (value === true)
+                m++;
+        })
+
+        console.log(m)
+        for (let i = 0; i < m; i++) {
+            strengthBox[i].classList.add('strength')
+        }
+        switch (m) {
+            case 1:
+                spanText.innerHTML = '弱'
+                break;
+            case 2:
+                spanText.innerHTML = '中'
+                break;
+            case 3:
+                spanText.innerHTML = '强'
+                break;
+        }
+    })
+
+    function inputDelete(value) {
+        for (let i = 0; i < 3; i++) {
+            strengthBox[i].classList.remove('strength')
+        }
+        strength[0] = false
+        strength[1] = false
+        strength[2] = false
+        for (let i = 0; i < value.length; i++) {
+            let ascStr = value.charCodeAt(i)
+            if (ascStr >= 48 && ascStr <= 57) strength[0] = true
+            if (ascStr >= 97 && ascStr <= 122) strength[1] = true
+            if (ascStr >= 65 && ascStr <= 90) strength[2] = true
+        }
+    }
+</script>
+
+</body>
+</html>

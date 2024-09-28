@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo2.html</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_4624650_hxhpnxp4czd.css">
+    <style>
+        i.moveTail {
+            display: block;
+            position: fixed;
+        }
+
+        i.moveTail:before {
+            content: '\e770';
+            font-size: 20px;
+            color: inherit;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+</div>
+<div id="tailBox"></div>
+<script>
+    let vm = new Vue({
+        el: "#root",
+        data() {
+            return {}
+        },
+        methods: {
+            color() {
+                let r = Math.trunc(Math.random() * 255 + 1)
+                let g = Math.trunc(Math.random() * 255 + 1)
+                let b = Math.trunc(Math.random() * 255 + 1)
+                return `rgb(${r},${g},${b})`
+            },
+            addTail(x, y) {
+                const tailBox = document.getElementById('tailBox')
+                const tail = document.createElement('i')
+                tail.className = 'iconfont moveTail'
+                tailBox.appendChild(tail)
+                tail.style.color = this.color()
+
+                tail.style.top = y  + 'px'
+                tail.style.left = x + 'px'
+
+
+                setTimeout(function () {
+                    tail.remove()
+                }, 400)
+            },
+            cursorMove(e) {
+                this.addTail(e.clientX, e.clientY)
+            }
+        },
+        mounted() {
+            const that = this
+            console.log(that.color())
+            document.addEventListener('mousemove', that.cursorMove)
+
+        }
+    })
+</script>
+
+</body>
+</html>

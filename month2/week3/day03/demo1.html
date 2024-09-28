@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Document</title>
+
+</head>
+<body>
+<div id="root">
+
+
+</div>
+<script>
+    document.write('100-200之间的质数有')
+    for (let i = 100; i < 201; i++) {
+        for (let j = 2; j <= i; j++) {
+            if (j === i)
+                document.write(j + ' ')
+            if (i % j === 0)
+                break;
+        }
+    }
+
+</script>
+
+</body>
+</html>
