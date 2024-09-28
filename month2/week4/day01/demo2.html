@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<body>
+<div id="root">
+
+</div>
+<script>
+    const root = document.querySelector('#root');
+    const array_2D = [
+        [1, 2, 3, 4, 5],
+        [6, 7, 8, 9, 10],
+        [11, 12, 13, 14, 15],
+        [16, 17, 18, 19, 20],
+        [21, 22, 23, 24, 25]
+    ]
+    for (let i = 0; i < array_2D.length; i++) {
+        for (let j = 0; j <= i; j++) {
+            if (array_2D[i][j] < 10) root.innerHTML += 0;
+            root.innerHTML += array_2D[i][j] + '&emsp;'
+        }
+        root.innerHTML += '<br/>'
+
+    }
+
+</script>
+
+</body>
+</html>

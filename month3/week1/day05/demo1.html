@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+    <link href="CSS/demo1.css" rel="stylesheet">
+</head>
+<body>
+<div id="root">
+    <div class="main">
+
+        <div class="main_focus">
+            <ul class="focus focusA">
+                <li :class="img.className" :key="img.id" class="focus_li" v-for="img in images">
+                    <img :src="img.image" alt="">
+                </li>
+                <li :class="images[0].className" class="focus_li">
+                    <img :src="images[0].image" alt="">
+                </li>
+            </ul>
+            <ul class="move">
+                <li @click="last"><span>&lt;</span></li>
+                <li @click="next"><span>&gt;</span></li>
+            </ul>
+            <ul class="focus_a">
+                <li class="focus_moveLi ia"></li>
+                <li class="ia"></li>
+                <li class="ia"></li>
+            </ul>
+        </div>
+
+
+    </div>
+
+</div>
+<script>
+    let vm = new Vue({
+        el: "#root",
+
+        data() {
+            return {
+                images: [
+                    {id: 1, image: "./images/demo7_1.png", className: "focus_img"},
+                    {id: 2, image: "./images/demo7_2.png", className: "focus_img"},
+                    {id: 3, image: "./images/demo7_3.png", className: "focus_img"},
+                ],
+                index: 0,  // 当前显示的图片索引
+                left: 0,   // 当前的左边偏移量
+                focusW: 0, // 每个轮播项的宽度
+                autoPlay: null,  // 定时器
+                transitioning: false  // 过渡状态标识，防止快速点击导致顺序错误
+            }
+        },
+        methods: {
+            // 切换到上一张
+            last() {
+                if (this.transitioning) return; // 防止快速点击
+                this.transitioning = true; // 标记过渡开始
+
+                const focus = document.getElementsByClassName("focus")[0];
+
+                // 如果当前是第一张，瞬间跳转到补位的最后一张，然后再过渡到倒数第二张
+                if (this.index === 0) {
+                    focus.style.transition = 'none'; // 取消动画
+                    this.index = this.images.length;  // 跳转到最后一张补位图
+                    this.left = this.focusW * this.index;
+                    focus.style.marginLeft = -this.left + 'px';
+
+                    this.$nextTick(() => {
+                        setTimeout(() => {
+                            focus.style.transition = 'all 1s'; // 恢复动画
+                            this.index--;  // 设置为倒数第二张
+                            this.left = this.focusW * this.index;
+                            focus.style.marginLeft = -this.left + 'px';
+                            this.updateDots();  // 更新下方圆点
+                        }, 50);
+                    });
+                } else {
+                    // 平滑切换到上一张
+                    this.index--;
+                    this.left = this.focusW * this.index;
+                    focus.style.transition = 'all 1s';
+                    focus.style.marginLeft = -this.left + 'px';
+                    this.updateDots();  // 更新下方圆点
+                }
+
+                // 监听动画结束事件，标记过渡完成
+                focus.addEventListener('transitionend', () => {
+                    this.transitioning = false; // 标记过渡结束
+                }, { once: true });
+            },
+
+            // 切换到下一张
+            next() {
+                if (this.transitioning) return; // 防止快速点击
+                this.transitioning = true; // 标记过渡开始
+
+                const focus = document.getElementsByClassName("focus")[0];
+
+                // 平滑切换到下一张
+                this.index++;
+                this.left = this.focusW * this.index;
+                focus.style.transition = 'all 1s';
+                focus.style.marginLeft = -this.left + 'px';
+
+                // 如果当前是最后一张，瞬间跳转回补位的第一张，然后平滑跳回真正的第一张
+                if (this.index === this.images.length) {
+                    this.$nextTick(() => {
+                        setTimeout(() => {
+                            focus.style.transition = 'none'; // 取消动画
+                            this.index = 0;  // 跳转到第一张
+                            this.left = 0;
+                            focus.style.marginLeft = "0";
+
+                            this.$nextTick(() => {
+                                setTimeout(() => {
+                                    focus.style.transition = 'all 1s'; // 恢复动画
+                                }, 50);
+                            });
+                        }, 1000);  // 等待动画完成
+                    });
+                }
+
+                this.updateDots();  // 更新下方圆点
+
+                // 监听动画结束事件，标记过渡完成
+                focus.addEventListener('transitionend', () => {
+                    this.transitioning = false; // 标记过渡结束
+                }, { once: true });
+            },
+
+            // 更新下方的圆点
+            updateDots() {
+                const ia = document.getElementsByClassName("ia");
+                for (let i = 0; i < ia.length; i++) {
+                    ia[i].classList.remove('focus_moveLi');
+                }
+                // 显示当前图片对应的圆点，使用`index % images.length`来确保循环
+                ia[this.index % this.images.length].classList.add('focus_moveLi');
+            },
+
+            // 自动播放
+            startAutoPlay() {
+                this.stopAutoPlay(); // 防止多次启动计时器
+                this.autoPlay = setInterval(this.next, 3000);  // 每3秒自动切换下一张
+            },
+
+            // 停止自动播放
+            stopAutoPlay() {
+                if (this.autoPlay) {
+                    clearInterval(this.autoPlay);  // 停止自动播放
+                    this.autoPlay = null;
+                }
+            }
+        },
+        mounted() {
+            // 页面挂载后，获取每个轮播项的宽度
+            this.$nextTick(() => {
+                this.focusW = parseInt(window.getComputedStyle(document.querySelector('.focus_li')).width);
+            });
+
+            // 自动播放启动
+            this.startAutoPlay();
+
+            const main_focus = document.querySelector('.main_focus');
+            window.onresize = () => {
+                this.focusW = parseInt(window.getComputedStyle(document.querySelector('.focus_li')).width);
+            };
+
+            // 当鼠标移入时，停止自动播放
+            main_focus.addEventListener('mouseenter', this.stopAutoPlay);
+            // 当鼠标移出时，恢复自动播放
+            main_focus.addEventListener('mouseleave', this.startAutoPlay);
+        }
+    })
+</script>
+
+</body>
+</html>

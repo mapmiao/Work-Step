@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Document</title>
+</head>
+
+<body>
+<input id="num1" placeholder="值1" type="text">
+<!-- <button>+</button> -->
+<input id="num2" onkeydown="a('+')" placeholder="值2" type="text">
+<!-- <button onclick="btn('+')">=</button> -->
+<h3 id="result"></h3><br>
+
+<input onclick="c(this.value)" type="button" value="+">
+<input onclick="c(this.value)" type="button" value="-">
+<input onclick="c(this.value)" type="button" value="*">
+<input onclick="c(this.value)" type="button" value="/">
+</body>
+<script>
+    function c(s) {
+
+        let a = 1 * num1.value;
+        let b = 1 * num2.value;
+        switch (s) {
+            case '+':
+                result.innerHTML = (a + b);
+                num1.value = (a + b);
+                break;
+            case '-':
+                result.innerHTML = (a - b);
+                num1.value = (a - b);
+                break;
+            case '*':
+                result.innerHTML = (a * b);
+                num1.value = (a * b);
+                break;
+            case '/':
+                result.innerHTML = (a / b);
+                num1.value = (a / b);
+                break;
+        }
+        num2.value = "";
+    }
+</script>
+
+</html>

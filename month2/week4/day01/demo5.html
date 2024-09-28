@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span {
+            color: red;
+            font-size: 12px;
+            margin: -10px 0 0 5px;
+        }
+    </style>
+</head>
+<body>
+<input id="getArray" type="text"><span>*请输入一串数组并以“ ”分隔</span>
+<button id="btn">点击增加30%</button>
+<div id="root"></div>
+<script>
+    const btn = document.getElementById("btn");
+
+    function getArray() {
+        const getArray = document.getElementById('getArray').value;
+        const patt = /\s+/;
+        return getArray.split(patt);
+    }
+
+    btn.onclick = function () {
+        const array = getArray()
+        const root = document.getElementById('root')
+
+        map(array)
+        root.innerHTML = map(array);
+    }
+
+    function map(array) {
+        let newArray = [];
+        array.forEach(key => {
+            newArray.push(Math.trunc(key * 1.3))
+        })
+        return newArray;
+    }
+
+</script>
+
+</body>
+</html>
