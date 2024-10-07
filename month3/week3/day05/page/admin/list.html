@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.7.2/axios.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/js-cookie/3.0.5/js.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="../../js/http.js"></script>
+    <title>list.html</title>
+    <link rel="stylesheet" href="../../css/index.css">
+    <style>
+        html,
+        body {
+            background: #eeeeee;
+        }
+
+        @media screen and (max-width: 635px) {
+            .commodityList {
+                padding: 20px;
+            }
+
+            .commodity {
+                width: calc(100% / 2 - 10px) !important;
+            }
+        }
+
+        @media screen and (max-width: 325px) {
+            .commodity {
+                width: calc(100% - 10px) !important;
+            }
+        }
+
+        .commodityList {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .commodity {
+            width: 100%;
+            line-height: 70px;
+            border: 1px solid #d1d1d1;
+            background: white;
+        }
+
+        .commodity a {
+            height: 100%;
+        }
+
+        .commodity a img {
+            width: 60px;
+            border-right: 1px solid #d1d1d1;
+        }
+
+        .commodity ul {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .commodity li {
+            height: 60px;
+            line-height: 60px;
+        }
+
+        .commodity li:nth-child(2) {
+            width: 20%;
+            min-width: 200px;
+        }
+
+        .commodity li:nth-child(2) h5 {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .commodity li:nth-child(3), .commodity li:nth-child(4) {
+            width: 100px;
+        }
+
+        .commodity li:nth-child(5) {
+            width: 50px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="root">
+    <ul id="commodityList" class="commodityList">
+        <li class="commodity">
+            <ul>
+                <li>图片</li>
+                <li class="title"><h5>商品名</h5></li>
+                <li class="price"><p>商品原价格</p></li>
+                <li class="current_price"><p>商品现价</p></li>
+                <li class="goods_number"><p>商品数量</p></li>
+                <li class="category"><p>商品种类</p></li>
+            </ul>
+        </li>
+        <li id="commodity" class="commodity" v-for="commodity in commodityList" :key="commodity.id">
+            <a href="./updata.html">
+                <ul>
+                    <li><img :src="commodity.img_big_logo" alt=""></li>
+                    <li class="title"><h5>{{commodity.title}}</h5></li>
+                    <li class="price"><p>{{'￥' + commodity.price}}</p></li>
+                    <li class="current_price"><p>{{'￥' + commodity.current_price}}</p></li>
+                    <li class="goods_number"><p>{{commodity.goods_number}}</p></li>
+                    <li class="category"><p>{{commodity.category}}</p></li>
+                </ul>
+            </a>
+        </li>
+
+        <li id="add_commodity" class="add_commodity">
+            <a href="./add.html">
+                添加
+            </a>
+        </li>
+    </ul>
+
+</div>
+<script>
+
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                id: (() => {
+                    const path = new URLSearchParams(location.search)
+                    return path.get('id')
+                })(),
+                commodityList: [],
+            }
+        },
+        methods: {},
+        mounted() {
+            const that = this
+            ajax({
+                url: '/admin/goods',
+                method: 'GET',
+                headers: {
+                    'Authorization': Cookies.get('token'),
+                }
+            }).then((r) => {
+                if (r.data.code === 1) {
+                    that.commodityList = r.data.list
+                    console.log(that.commodityList)
+                } else {
+                    alert('数据加载失败！') //
+                }
+            })
+
+        }
+    })
+</script>
+
+</body>
+
+</html>

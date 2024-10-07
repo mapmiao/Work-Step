@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #root {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+["小张", "小王", "小赵", "小刘", "小李", "小汪"]
+<div id="root">
+
+</div>
+<button onclick="fn()">点击随机点名</button>
+<script>
+    let arr = ["小张", "小王", "小赵", "小刘", "小李", "小汪"]
+
+    function fn() {
+        let i = parseInt(Math.random() * arr.length)
+        root.innerText = arr[i]
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        .slider {
+            width: 590px;
+            margin: 60px auto;
+            padding: 5px;
+            border: 1px solid #eeeeee;
+            position: relative;
+        }
+
+        .slider_wrapper {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+
+            &:hover {
+                &::before, &::after {
+                    content: '<';
+                    width: 30px;
+                    height: 30px;
+                    display: block;
+                    font-size: 30px;
+                    color: white;
+                    line-height: 30px;
+                    position: absolute;
+                    top: calc((100% - 30px) / 2);
+                    background-color: rgba(80, 80, 80, 0.4);
+                    text-align: center;
+                }
+                &::before {
+                    left: 0;
+                     border-top-right-radius: 100%;
+                     border-bottom-right-radius: 100%;
+                 }
+
+                &::after {
+                    content: '>';
+                    right: 0;
+                    border-top-left-radius: 100%;
+                    border-bottom-left-radius: 100%;
+                }
+            }
+        }
+        .slider:hover .slider_indicators {
+            position: absolute;
+            display: flex;
+            bottom: 20px;
+            left: 30px;
+            & li {
+                width: 15px;
+                height: 15px;
+                background-color: #ececec;
+                border-radius: 100%;
+                margin: 0 5px;
+            }
+            & li:nth-child(1) {
+                background-color: #9f9f9f;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <div class="slider">
+        <ul class="slider_wrapper">
+            <li>
+                <img alt="" src="./images/demo3.png">
+            </li>
+        </ul>
+        <ul class="slider_indicators">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

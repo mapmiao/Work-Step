@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.7.2/axios.js"></script>
+    <script src="./js/http.js"></script>
+    <title>注册</title>
+</head>
+
+<body>
+    <div id="root">
+        <label>
+            用户名：<input type="text" name="" id="username"><br>
+            密&emsp;&emsp;码：<input type="password" name="" id="password"><br>
+            重复密码：<input type="password" name="" id="rpassword"><br>
+            用户昵称：<input type="text" name="" id="nickname"><br>
+            <input type="button" value="注册" onclick="register()">
+        </label>
+    </div>
+    <script>
+        function register() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const rpassword = document.getElementById('rpassword').value;
+            const nickname = document.getElementById('nickname').value;
+            ajax({
+                url: '/users/register',
+                method: 'POST',
+                data: {
+                    username: username,
+                    password: password,
+                    rpassword: rpassword,
+                    nickname: nickname,
+                },
+            }).then((r) => {
+                if (r.data.code === 1) {// 注册成功
+                    alert(r.data.message);
+                } else { // 注册失败
+                    alert(r.data.message);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

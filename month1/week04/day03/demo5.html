@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 300px;
+            margin: 60px auto;
+        }
+
+        label {
+            border: 1px solid #000000;
+            display: inline-block;
+            line-height: 35px;
+            width: 220px;
+            height: 35px;
+
+            input, button {
+                background: none;
+                border: none;
+                outline: none;
+            }
+
+            .a:hover {
+                font-size: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <label>
+        <input type="password">
+        <button class="a" onclick="fn()">👀</button>
+    </label>
+
+</div>
+<script>
+    let input = document.getElementsByTagName("input")[0]
+    let a = false
+
+    function fn() {
+        if (!a) {
+            a = true
+            input.type = "text"
+        } else {
+            a = false
+            input.type = "password"
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.7.2/axios.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/js-cookie/3.0.5/js.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="./js/http.js"></script>
+    <title>购物车</title>
+    <link rel="stylesheet" href="./css/index.css">
+
+    <style>
+        img {
+            height: 100%;
+        }
+
+        .shopping > ul > li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .shop {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .shop > li {
+            height: 60px;
+            line-height: 60px;
+        }
+
+        .shop > li:nth-child(2) {
+            width: 20%;
+            min-width: 200px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .shop > li:nth-child(3) {
+            width: 60px;
+        }
+
+        .shop > li:nth-child(4), .shop > li:nth-child(5) {
+            width: 12%;
+            min-width: 70px;
+            max-width: 100px;
+        }
+
+        .shopping > ul > li:first-child li:nth-child(6) {
+            border: none;
+        }
+
+        .shop > li:nth-child(6) {
+            display: flex;
+            align-items: center;
+            border: 1px solid #E5E5E5;
+            height: 50px;
+        }
+
+        .shop > li:nth-child(6) input, button {
+            height: 100%;
+            background: none;
+            border: none;
+        }
+
+        .shop > li:nth-child(6) input {
+            width: 45px;
+            text-align: center;
+        }
+
+        .shop > li:nth-child(6) button {
+            width: 35px;
+            background: #E5E5E5;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="root">
+    <div class="shopping">
+        <ul>
+            <li>
+                <ul class="shop">
+                    <li><input type="checkbox" id="all_select_inp" @click="selectAll"></li>
+                    <li>商品名称</li>
+                    <li>图片</li>
+                    <li>现价</li>
+                    <li>原价</li>
+                    <li>个数</li>
+                    <li>
+                        <button @click="all_del">删除</button>
+                    </li>
+                </ul>
+            </li>
+            <li v-for="shop in cartList">
+                <ul class="shop">
+                    <li><input type="checkbox" class="i_select" :checked="shop.is_select"
+                               @click="select(shop.goods_id)"></li>
+                    <li>{{shop.title}}</li>
+                    <li><img :src="shop.img_small_logo" alt=""></li>
+                    <li>{{'￥' + shop.price}}</li>
+                    <li>{{'￥' + shop.current_price}}</li>
+                    <li>
+                        <button @click="altNumber(shop.goods_id,--shop.cart_number)">-</button>
+                        <input type="number" @input="altNumber(shop.goods_id,shop.cart_number)"
+                               v-model="shop.cart_number">
+                        <button @click="altNumber(shop.goods_id,++shop.cart_number)">+</button>
+                    </li>
+                    <li>
+                        <button @click="del(shop.goods_id)">删除</button>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    let vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                cartList: null,
+            }
+        },
+        methods: {
+            get_cart() {
+                ajax({
+                    url: '/cart/list',
+                    method: 'GET',
+                    headers: {
+                        authorization: Cookies.get('token')
+                    },
+                    params: {
+                        id: Cookies.get('id'),
+                    }
+                }).then((r) => {
+                    if (r.data.code === 1) {
+                        this.cartList = r.data.cart;
+
+                        let all_select = true;
+                        const all_select_inp = document.getElementById('all_select_inp');
+                        for (let i = 0; i < this.cartList.length; i++) {
+                            if (!this.cartList[i].is_select) {
+                                all_select = false;
+                                break
+                            }
+                        }
+                        all_select_inp.checked = all_select;
+
+                    } else if (r.data.code === 0) {
+                        alert(r.data)
+                    } else {
+                        alert('请登录！')
+                        location.href = './login.html'
+                    }
+                });
+            },
+
+            // 修改所有商品的选中状态
+            selectAll() {
+
+                const all_select_inp = document.getElementById('all_select_inp');
+                const i_select = document.getElementsByClassName('i_select');
+                for (let i = 0; i < i_select.length; i++) {
+                    i_select[i].checked = all_select_inp.checked
+                }
+                console.log(all_select_inp.checked)
+                ajax({
+                    url: '/cart/select/all',
+                    method: 'POST',
+                    headers: {
+                        'Authorization': Cookies.get('token'),
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    data: {
+                        id: Cookies.get('id') * 1,
+                        type: all_select_inp.checked * 1,
+                    }
+                })
+            },
+            // 修改单个商品状态
+            select(goodsId) {
+                ajax({
+                    url: '/cart/select',
+                    method: 'POST',
+                    headers: {
+                        'Authorization': Cookies.get('token'),
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    data: {
+                        id: Cookies.get('id') * 1,
+                        goodsId,
+                    }
+                }).then((r) => {
+                    if (r.data.code === 0) {
+                        alert(r.data.message)
+                    }
+                }).catch((e) => {
+                    console.log(e)
+                })
+            },
+            // 修改商品数量
+            altNumber(goodsId, number) {
+                ajax({
+                    url: '/cart/number',
+                    method: 'POST',
+                    headers: {
+                        'Authorization': Cookies.get('token'),
+                        'Content-Type': 'application/json',
+                    },
+                    data: {
+                        id: Cookies.get('id') * 1,
+                        goodsId,
+                        number,
+                    }
+                }).then((r) => {
+                    if (r.data.code === 0) {
+                        alert(r.data.message)
+                    }
+                }).catch((e) => {
+                    console.log(e)
+                })
+            },
+            // 删除
+            del(goodsId) {
+                ajax({
+                    url: '/cart/remove',
+                    method: 'GET',
+                    headers: {
+                        'Authorization': Cookies.get('token'),
+                    },
+                    params: {
+                        id: Cookies.get('id') * 1,
+                        goodsId,
+                    }
+                }).then((r) => {
+                    this.get_cart()
+                }).catch((e) => {
+                    console.log(e)
+                })
+            },
+            all_del() {
+                ajax({
+                    url: '/cart/remove/select',
+                    method: 'GET',
+                    headers: {
+                        'authorization': Cookies.get('token'),
+                        'Content-Type': 'application/x-www-form-urlencoded'
+
+                    },
+                    params: {
+                        id: Cookies.get('id') * 1,
+                    }
+                }).then((r) => {
+                    this.get_cart()
+                })
+            }
+        },
+        mounted() {
+            const that = this;
+            that.get_cart();
+
+        }
+    })
+</script>
+
+</body>
+
+</html>

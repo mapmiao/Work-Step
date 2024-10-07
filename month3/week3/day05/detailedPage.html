@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.7.2/axios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/js-cookie/3.0.5/js.cookie.min.js"></script>
+    <script src="./js/http.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <title></title>
+    <style>
+        .commodity {
+            display: flex;
+        }
+
+        .commodity div:first-child {
+            width: 400px;
+            margin-left: 40px;
+        }
+
+        .commodity div:last-child {
+            margin-left: 40px;
+        }
+
+        .goods_number {
+            width: max-content;
+            display: flex;
+            border: 1px solid #dcdcdc;
+        }
+
+        input,
+        button {
+            outline: none;
+            background: none;
+            border: none;
+            font-size: 16px;
+        }
+
+        .goods_number button {
+            padding: 10px 20px;
+            background: #eeeeee;
+        }
+
+        .goods_number input {
+            text-align: center;
+            width: 40px;
+            padding: 0 10px;
+            height: 40px;
+        }
+
+        .add_shop {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            padding: 0 20px;
+            background: #ff8f5e;
+            color: white;
+            transition: all 0.5s;
+            margin-top: 10px;
+            box-shadow: 1px 0 5px 2px #c4714d;
+        }
+
+        .add_shop:hover {
+            box-shadow: 1px 0 5px 2px #c4714d inset;
+        }
+    </style>
+</head>
+
+<body>
+<div id="root">
+    <div id="commodity" class="commodity">
+        <div>
+            <img :src="commodity.img_big_logo" alt="">
+        </div>
+        <div>
+            <h4>{{commodity.title}}</h4>
+            <p>{{'￥' + commodity.current_price}}</p>
+            <label class="goods_number">
+                <button @click="goods_number<=0 ? 0 : goods_number--">-</button>
+                <input type="text" v-model="goods_number">
+                <button @click="goods_number++">+</button>
+            </label>
+            <button class="add_shop" @click="add_shop">加入购物车</button>
+
+        </div>
+    </div>
+
+</div>
+<script>
+
+    let vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                goods_number: 0,
+                commodity: {
+                    title: null,
+                    img_big_logo: null,
+                },
+                goodsId: (() => {
+                    const path = new URLSearchParams(location.search)
+                    return path.get('goodsId')
+                })()
+            }
+        },
+        methods: {
+            add_shop() {
+                if (this.goods_number <= 0) return
+                for (let i = 0; i < this.goods_number; i++) {
+                    ajax({
+                        url: '/cart/add',
+                        method: 'POST',
+                        headers: {
+                            authorization: Cookies.get('token')
+                        },
+                        data: {
+                            id: Cookies.get('id'),
+                            goodsId: this.goodsId,
+                        }
+                    }).then((r) => {
+                        if (i !== this.goods_number - 1) return
+                        if (r.data.code === 1) {
+                            if (confirm(`您已成功将${this.goods_number}个${this.commodity.title}加入购物车，是否前往购物车？`)) {
+                                console.log('ok')
+                                location.href = './shopping.html';
+                            }
+                        } else if (!Cookies.get('id')) {
+                            alert('请登录')
+                            location.href = 'login.html';
+                        } else if (r.data.code !== 1) {
+                            alert('请检查网络连接是否正常')
+                        }
+                    })
+                }
+            }
+        },
+        mounted() {
+            const that = this;
+
+            console.log(Cookies.get())
+            ajax({
+                url: '/goods/item?id=' + that.goodsId,
+                headers: {
+                    authorization: Cookies.get('token'),
+                },
+                method: 'GET',
+            }).then((r) => {
+                if (r.data.code === 1) {
+                    that.commodity = r.data.info;
+                    document.querySelector('title').innerText = that.commodity.title;
+                    console.log(r.data)
+                } else {
+                    alert('数据加载错误！');
+                    location.href = './main.html'
+                }
+            })
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.7.2/axios.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/js-cookie/3.0.5/js.cookie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="../../js/http.js"></script>
+    <title>购物车</title>
+    <link rel="stylesheet" href="../../css/index.css">
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+<div id="root">
+    <label>
+        <input type="text" name="" id="title">
+        <input type="file" name="" id="img_big_logo">
+        <input type="text" name="" id="price">
+        <input type="text" name="" id="goods_number">
+        <input type="text" name="" id="category">
+        <input type="text" name="" id="">
+    </label>
+</div>
+<script>
+    let vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                cartList: null,
+            }
+        },
+        methods: {
+
+        },
+        mounted() {
+            const that = this;
+
+        }
+    })
+</script>
+</body>
+</html>
