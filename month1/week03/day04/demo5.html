@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<div id="root">
+    写一个函数计算两个数的最大公约数，最小公倍数; 并返回结果打印出来
+</div>
+<script>
+    function f(num1, num2) {
+        let Print = "最大公约数: " + f_GCD(num1, num2) + "<br>" + "最小公倍数: " + f_CM(num1, num2);
+        return root.innerHTML = Print;
+    }
+
+    function f_GCD(num1, num2) {
+        // 最大公约数
+        let GCD;
+        if (num1 > num2)
+            GCD = num2;
+        else
+            GCD = num1;
+        for (GCD; GCD > 0; GCD--) {
+            if (num1 % GCD === 0 && num2 % GCD === 0)
+                break;
+        }
+        if (GCD <= 1)
+            return false;
+        else
+            return GCD;
+
+    }
+
+    function f_CM(num1, num2) {
+        // 最小公倍数
+        let CM;
+        if (num1 > num2)
+            CM = num1;
+        else
+            CM = num2;
+        for (CM; CM <= num1 * num2; CM++) {
+            if (CM % num1 === 0 && CM % num2 === 0)
+                break;
+        }
+        return CM;
+    }
+
+    let num1 = prompt()
+    let num2 = prompt()
+    f(num1, num2)
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 635px) {
+    #root {
+        width: 100% !important;
+    }
+
+}
+
+#root {
+    max-width: 1200px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    display: block;
+    color: #222222;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

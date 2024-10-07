@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.7.2/axios.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="./js/http.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <title>首页</title>
+    <style>
+        html,
+        body {
+            background: #eeeeee;
+        }
+
+        @media screen and (max-width: 635px) {
+            .commodityList {
+                padding: 20px;
+            }
+
+            .commodity {
+                width: calc(100% / 2 - 10px) !important;
+            }
+        }
+
+        @media screen and (max-width: 325px) {
+            .commodity {
+                width: calc(100% - 10px) !important;
+            }
+        }
+
+        .commodityList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .commodity {
+            width: calc(100% / 4 - 10px);
+            border: 1px solid #d1d1d1;
+        }
+
+        .commodity a {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .commodity a img {
+            border-bottom: 1px solid #d1d1d1;
+        }
+
+        .commodity a > div:last-child {
+            padding: 5px 10px;
+            background: #ffffff;
+            flex: 1;
+        }
+
+        .commodity p {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<div id="root">
+    <ul id="commodityList" class="commodityList">
+        <li id="commodity" class="commodity" v-for="commodity in commodityList" :key="commodity.id">
+            <a :href="`./detailedPage.html?goodsId=${commodity.goods_id}`">
+                <div><img :src="commodity.img_big_logo" alt=""></div>
+                <div>
+                    <h5>{{commodity.title}}</h5>
+                    <p>{{'￥' + commodity.current_price}}</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+</div>
+<script>
+
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                id: (() => {
+                    const path = new URLSearchParams(location.search)
+                    return path.get('id')
+                })(),
+                commodityList: [],
+            }
+        },
+        methods: {},
+        mounted() {
+            const that = this
+            ajax({
+                url: '/goods/list',
+                method: 'GET',
+            }).then((r) => {
+                if (r.data.code === 1) {
+                    that.commodityList = r.data.list
+                    console.log(that.commodityList)
+                } else {
+                    alert('数据加载失败！') //
+                }
+            })
+
+        }
+    })
+</script>
+
+</body>
+
+</html>

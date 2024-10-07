@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <div v-for="item in winner"><span> {{item.name}} </span> <span v-for="item in item.prize"> {{item}} </span></div>
+    <button @click="raffle()">点击进行抽奖</button>
+</div>
+<script>
+    new Vue({
+        el: "#root",
+        data() {
+            return {
+                employee: [],
+                winner: [
+                    {name: "一等奖：", prize: [], num: 1},
+                    {name: "二等奖：", prize: [], num: 2},
+                    {name: "三等奖：", prize: [], num: 3}
+                ]
+            }
+        },
+        methods: {
+            raffle() {
+                this.employee = [
+                    "甲子", "甲丑", "甲寅", "甲卯", "甲辰",
+                    "甲巳", "甲午", "甲未", "甲申", "甲酉",
+                    "甲昔", "甲亥", "乙子", "乙丑", "乙寅",
+                    "乙卯", "乙辰", "乙巳", "乙戊", "乙午"
+                ];
+                this.winner.forEach((value) => {
+                    value.prize = [];
+                    for (let i = 0; i < value.num; i++) {
+                        let index = parseInt(Math.random() * this.employee.length);
+                        value.prize.push(this.employee[index]);
+                        this.employee.splice(index, 1)
+
+                    }
+                })
+
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

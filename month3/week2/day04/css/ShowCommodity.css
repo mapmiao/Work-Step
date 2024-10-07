@@ -1,0 +1,51 @@
+img {
+    width: 100%;
+    display: block;
+}
+
+li {
+    list-style: none;
+}
+
+.commodity {
+    position: relative;
+    width: 500px;
+    border: 1px solid #eeeeee;
+}
+
+.commodity_img {
+    position: relative;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.commodity_img .show_box {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(218, 203, 30, 0.66);
+
+}
+
+.commodity_list ul {
+    display: flex;
+    /*gap: 2px;*/
+}
+
+.commodity_list li {
+    padding: 2px;
+    width: 100px;
+    border-right: 1px solid #eeeeee;
+}
+
+.magnifyingLens {
+    display: none;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+}
+
+.magnifyingLens img {
+    position: absolute;
+    width: 200%;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <div>分组情况：</div>
+    <div>
+        <span v-for="(item, index) in groupNew"><span
+                v-if="index % 2 === 0">第{{(index + 2) / 2}}组：</span> {{item}} <br v-if="index % 2 === 1"></span>
+    </div>
+    <button @click="raffle()">点击进行抽奖</button>
+</div>
+<script>
+    let vm = new Vue({
+        el: "#root",
+        data() {
+            return {
+                group: [
+                    "第一队", "第二队", "第三队", "第四队", "第五队",
+                    "第六队", "第七队", "第八队", "第九队", "第十队"
+                ],
+                groupNew: [],
+                i: 0
+            }
+        },
+        methods: {
+            raffle() {
+                for (let i = 0; i < 10; i++) {
+                    let index = parseInt(Math.random() * this.group.length);
+                    this.groupNew.push(this.group[index]);
+                    this.group.splice(index, 1)
+
+                }
+                console.log("groupNew" + this.groupNew)
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

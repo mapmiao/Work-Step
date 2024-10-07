@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo4</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/c/font_4624650_eusbgjfkbv4.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #root {
+            width: 23%;
+            border: 1px solid #dce1e9;
+            margin: 5px auto;
+            background: #fafafa;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: red;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .textTop, ul {
+            padding: 5px 8px;
+        }
+
+        /* title */
+        .textTop {
+            height: 40px;
+            border-bottom: 1px solid #dce1e9;
+        }
+
+        .titleLeft, .titleRight, a {
+            font-size: 20px;
+            line-height: 40px;
+            color: #252525;
+        }
+
+        .titleRight {
+            position: relative;
+            float: right;
+        }
+
+        .titleRight, a {
+            font-size: 16px;
+        }
+
+        .title::before {
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-image: url("images/换一换.png");
+            background-repeat: no-repeat;
+            background-size: 20px;
+            position: absolute;
+            left: -22px;
+            top: 10px;
+        }
+
+        .title:hover::before {
+            background-image: url("images/换一换-copy.png");
+        }
+
+        /* lu */
+        .textId {
+            margin-right: 4px;
+        }
+
+        .textNum {
+            float: right;
+            color: #bababa;
+            font-size: 14px;
+        }
+
+        li {
+            display: flex;
+            flex-direction: column;
+            height: 35px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <div class="textTop">
+        <span class="titleLeft">搜索热点</span>
+        <span class="titleRight"><a class="title" href="#">换一批</a></span>
+
+    </div>
+
+    <ul>
+        <li v-for="titles in title">
+            <a class="textA" href="#">
+                <span class="textId">{{titles.id}}</span>
+                <span class="text">{{titles.main}}</span>
+                <span class="textNum">{{titles.num}}万</span>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            title: [
+                {id: 1, main: "央媒：高校助学金不能是笔糊涂账", num: 496},
+                {id: 2, main: "桂林航空疑停 市政已成立专...", num: 483},
+                {id: 3, main: "赴一场“穿越千年”的青春邀约", num: 479},
+                {id: 4, main: "黑龙江局部降大暴雪 破历史极...", num: 466},
+                {id: 5, main: "被诬陷地铁偷拍男子穿涉事鞋出庭", num: 459},
+                {id: 6, main: "六问“河南23岁女教师留遗书去...”", num: 444},
+                {id: 7, main: "马斯克称终有一日人类将无需工作", num: 436},
+                {id: 8, main: "长沙岳麓山有人被拐缅甸？假的", num: 422},
+                {id: 9, main: "刘润演讲引质疑1场线下课收60万", num: 412},
+                {id: 10, main: "《西游记》毗蓝婆菩萨扮演者去世", num: 406},
+            ]
+        }
+    })
+</script>
+</body>
+</html>

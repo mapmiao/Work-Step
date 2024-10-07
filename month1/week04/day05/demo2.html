@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            width: 80px;
+            height: 30px;
+            border: 1px solid #000000;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <div><label>
+        <input id="sName" name="name" placeholder="姓名" type="text">
+    </label></div>
+    <div><label>
+        <input id="sAge" name="age" placeholder="年龄" type="text">
+    </label></div>
+    <div><label>
+        <input name="gender" type="radio" value="男" checked>男
+        <input name="gender" type="radio" value="女">女
+    </label></div>
+    <button onclick="addStudent()">点击添加学生信息</button>
+</div>
+<div>
+    <table id="root">
+    </table>
+
+
+</div>
+<script>
+
+    function Student(id, name, age, gender) {
+        this.id = id
+        this.name = name
+        this.age = age
+        this.gender = gender
+    }
+
+    let id = 1
+
+    let school = []
+    root.innerHTML = "<tr><th>学号</th>" + "<th>姓名</th>" + "<th>年龄</th>" + "<th>性别</th>" + "<th>操作</th></tr>"
+
+    function addStudent() {
+        let input = document.getElementsByTagName("input")
+        name = input[0].value;
+        age = input[1].value;
+        gender = input[2].value
+        if (!name || !age) {
+            alert('信息填写不完整')
+            return
+        }
+        school.push(new Student(id, name, age, gender))
+        root.appendChild(addEle(id - 1))
+        input[0].value = ''
+        input[1].value = ''
+        id++
+    }
+
+    function addEle(id) {
+        let stu = school[id]
+        let tr = document.createElement('tr')
+        let td = document.createElement('td')
+        let button = document.createElement('button')
+        button.setAttribute('onclick', 'SClear(this)')
+        button.innerText = '点击删除'
+        for (const item in stu) {
+            let td = document.createElement('td')
+            td.innerText = stu[item]
+            tr.appendChild(td)
+        }
+        td.appendChild(button)
+        tr.appendChild(td)
+        return tr
+    }
+
+    function SClear(ele) {
+        let tr = ele.parentNode.parentNode
+        tr.remove()
+    }
+
+</script>
+</body>
+</html>

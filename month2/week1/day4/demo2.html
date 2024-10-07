@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        main div:nth-child(1) {
+            border-bottom: 6px solid #dddddd;
+
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+
+            & li {
+                line-height: 80px;
+                margin-right: 36px;
+
+                &:nth-child(8) {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        footer {
+            background: #dddddd;
+            text-align: center;
+
+            & span {
+                font-size: 13px;
+                line-height: 41px;
+                color: #808080;
+            }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div>
+        <img src="./images/demo2.png" alt="">
+    </div>
+    <div>
+        <ul>
+            <li>首页</li>
+            <li>关于主力</li>
+            <li>产品世界</li>
+            <li>新闻中心</li>
+            <li>网络事件</li>
+            <li>联系我们</li>
+            <li>关于我们</li>
+            <li>网络新闻</li>
+        </ul>
+    </div>
+</main>
+<footer>
+    <span>版权所有：浙江生产力门业有限公司 技术支持拍桑网络</span>
+</footer>
+</body>
+</html>

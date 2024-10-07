@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo2</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+
+    <link href="//at.alicdn.com/t/c/font_4624650_j8dmwabdtom.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #root {
+            width: 600px;
+            margin: 0 auto;
+        }
+
+        li {
+            list-style-type: none;
+            height: 35px;
+            line-height: 35px;
+            padding: 0 12px;
+        }
+
+        .textBox {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+        }
+
+        .textTop {
+            background: #edeeee;
+            padding: 4px 12px;
+            height: 35px;
+            box-shadow: 0 0 5px 0 #a7adb0;
+        }
+
+        .textTop span:nth-of-type(1) {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 35px;
+            color: #656565;
+        }
+
+        .textTop span:nth-of-type(2) {
+            line-height: 35px;
+            color: #00befd;
+        }
+
+        .floatRight {
+            float: right;
+            color: #8A8B99;
+        }
+
+        .textMain {
+            color: #8A8B99;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        a:hover span {
+            color: red;
+        }
+
+        .iconfont {
+            color: #8A8B99;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <div class="textBox" v-for="items in item">
+        <div class="textTop">
+            <span>{{items.title}}</span>
+            <span class="floatRight">更多</span>
+        </div>
+
+        <ul>
+            <li v-for="main in items.contents">
+                <a href="">
+                    <i class="iconfont icon-triangle-right"></i>
+                    <span class="textMain">{{main.content}}</span>
+                    <span class="floatRight">{{main.time}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: "#root",
+        data: {
+            item: [{
+                title: "省内咨询",
+                contents: [
+                    {content: "河北省科技工程学校全面推行德育工作导师制", time: "[04-11]"},
+                    {content: "2022年河北省职业教育工作推进会经验交流材料", time: "[04-11]"},
+                    {content: "教育部关于发布全国职业院校校长培训（培育）基地2022年培训...", time: "[04-11]"},
+                    {content: "中华职业教育社关于2021年“最美职校生”网络评选活动的通知", time: "[04-11]"},
+                    {content: "关于征集河北省职业院校信息化校园合作共建项目的通知", time: "[04-11]"}
+                ]
+            }, {
+                title: "省内咨询",
+                contents: [
+                    {content: "河北省科技工程学校全面推行德育工作导师制", time: "[04-11]"},
+                    {content: "2022年河北省职业教育工作推进会经验交流材料", time: "[04-11]"},
+                    {content: "教育部关于发布全国职业院校校长培训（培育）基地2022年培训...", time: "[04-11]"},
+                    {content: "中华职业教育社关于2021年“最美职校生”网络评选活动的通知", time: "[04-11]"},
+                    {content: "关于征集河北省职业院校信息化校园合作共建项目的通知", time: "[04-11]"}
+                ]
+            }, {
+                title: "省内咨询",
+                contents: [
+                    {content: "河北省科技工程学校全面推行德育工作导师制", time: "[04-11]"},
+                    {content: "2022年河北省职业教育工作推进会经验交流材料", time: "[04-11]"},
+                    {content: "教育部关于发布全国职业院校校长培训（培育）基地2022年培训...", time: "[04-11]"},
+                    {content: "中华职业教育社关于2021年“最美职校生”网络评选活动的通知", time: "[04-11]"},
+                    {content: "关于征集河北省职业院校信息化校园合作共建项目的通知", time: "[04-11]"}
+                ]
+            },]
+
+        }
+    })
+</script>
+</body>
+</html>

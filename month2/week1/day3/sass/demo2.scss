@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$borderWidth: 100px;
+$imgSize: 100px;
+$turnTime: 2s;
+#root {
+  margin: $borderWidth / 2 auto;
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  animation: turn $turnTime infinite linear;
+
+
+  & div {
+    border: $borderWidth solid transparent;
+    position: relative;
+  }
+
+  & div img {
+    width: $imgSize;
+    position: absolute;
+    animation: turn1 $turnTime infinite linear;
+  }
+
+  & div:nth-child(1) img {
+    left: -$borderWidth / 2 * 3;
+    bottom: -$borderWidth / 2 * 3;
+  }
+
+  & div:nth-child(2) img {
+    top: -$borderWidth / 2 * 3;
+    left: -$borderWidth / 2 * 3;
+  }
+
+  & div:nth-child(3) img {
+    bottom: -$borderWidth / 2 * 3;
+    right: -$borderWidth / 2 * 3;
+  }
+
+  & div:nth-child(4) img {
+    top: -$borderWidth / 2 * 3;
+    right: -$borderWidth / 2 * 3;
+  }
+
+  $a: (bottom, left, right, top);
+  $i: 1;
+  @each $value in $a {
+    & div:nth-child(#{$i}) {
+      border-#{$value}-color: red;
+    }
+    $i: $i + 1;
+  }
+}
+
+@keyframes turn {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes turn1 {
+
+  0% {
+    transform: rotate(360deg);
+  }
+  50% {
+    $imgSize: $imgSize * 2;
+    width: $imgSize;
+  }
+
+  100% {
+    transform: rotate(0);
+    width: $imgSize;
+  }
+
+}

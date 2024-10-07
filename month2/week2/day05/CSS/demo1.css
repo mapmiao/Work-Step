@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+li, a {
+    list-style: none;
+    text-decoration: none;
+    color: black;
+}
+
+nav {
+    margin: 0 auto;
+    width: max-content;
+}
+
+ul {
+    display: flex;
+}
+
+li {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+i {
+    display: inline-block;
+    width: 23px;
+    height: 16px;
+    margin: 0 5px;
+    background-image: url("../images/360bg.png");
+    background-position-y: 10px;
+}
+
+/*# sourceMappingURL=demo1.css.map */

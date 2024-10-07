@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        #root {
+        }
+
+        ul {
+            width: 60%;
+            margin: 60px auto;
+            border: 1px solid #eeeeee;
+            padding: 10px 10px 0;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+        }
+
+        li {
+            width: calc((100% - 10px * 4) / 5);
+            border: 5px solid #eeeeee;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        li:hover img {
+            width: 200%;
+            position: absolute;
+            z-index: 1;
+            top: -50%;
+            left: -50%;
+            border: 2px solid #000000;
+            padding: 5px;
+            background-color: #eeeeee;
+            transition: width 120ms;
+        }
+    </style>
+</head>
+<body>
+<div id="root">
+    <ul>
+        <li v-for="img in images">
+            <img :src="img" alt="">
+        </li>
+    </ul>
+</div>
+<script>
+    new Vue({
+        el: '#root',
+        data() {
+            return {
+                images: [
+                    './images/demo2/photo01.jpg',
+                    './images/demo2/photo02.jpg',
+                    './images/demo2/photo03.jpg',
+                    './images/demo2/photo04.jpg',
+                    './images/demo2/photo05.jpg',
+                    './images/demo2/photo06.jpg',
+                    './images/demo2/photo07.jpg',
+                    './images/demo2/photo08.jpg',
+                    './images/demo2/photo09.jpg',
+                    './images/demo2/photo10.jpg',
+                    './images/demo2/photo11.jpg',
+                    './images/demo2/photo12.jpg',
+                    './images/demo2/photo13.jpg',
+                    './images/demo2/photo14.jpg',
+                    './images/demo2/photo15.jpg',
+                    './images/demo2/photo16.jpg',
+                    './images/demo2/photo17.jpg',
+                    './images/demo2/photo18.jpg',
+                    './images/demo2/photo19.jpg',
+                    './images/demo2/photo20.jpg'
+                ]
+
+            }
+        }
+    })
+</script>
+</body>
+</html>

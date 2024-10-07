@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#root {
+    margin: 50px auto;
+    display: flex;
+}
+
+#root div {
+    border-style: solid;
+    border-width: 50px 30px;
+    border-color: #ff0008;
+    border-left-color: transparent;
+}
+
+#root div:nth-child(1) {
+    border-color: #ffa200;
+    border-left-color: red;
+}
+
+#root div:nth-child(2) {
+    border-color: #b2ff00;
+    border-left-color: #ffa200;
+}
+
+#root div:nth-child(3) {
+    border-color: #08ff00;
+    border-left-color: #b2ff00;
+}
+
+#root div:nth-child(4) {
+    border-color: #00ffa2;
+    border-left-color: #08ff00;
+}
+
+#root div:nth-child(5) {
+    border-color: #00b2ff;
+    border-left-color: #00ffa2;
+}
+
+#root div:nth-child(6) {
+    border-color: #0008ff;
+    border-left-color: #00b2ff;
+}
+
+#root div:nth-child(7) {
+    border-color: #a200ff;
+    border-left-color: #0008ff;
+    border-color: transparent;
+    border-left-color: #0008ff;
+}
+
+/*# sourceMappingURL=demo1.css.map */

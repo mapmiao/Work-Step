@@ -1,0 +1,383 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+li, a {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+
+//mixin
+@mixin flex() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+@mixin sanjiao {
+  background: #f75b54;
+  &::after {
+    content: '';
+    width: 0;
+    display: flex;
+    border-width: 7px;
+    border-style: solid;
+    border-color: #f75b54 transparent transparent;
+    margin: 0 auto;
+  }
+}
+
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html, body {
+  font-size: 1vw;
+}
+
+$liHeight: 70px;
+//header 头部样式
+header {
+  $boxShadow: #e9e9e9b5;
+  box-shadow: 0 2px 11px 2px $boxShadow;
+
+  .header {
+    width: 80%;
+    margin: 0 auto;
+    height: 12vh;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    & .logo {
+      padding-bottom: 10px;
+    }
+
+    & > nav {
+      display: flex;
+      align-items: flex-end;
+
+      @mixin atStyle {
+        background: #f75b54;
+        & a {
+          color: white;
+        }
+      }
+
+      & ul {
+        @include flex();
+
+        & li {
+          width: $liHeight * 1.3;
+          height: $liHeight;
+          border-top-left-radius: 5px;
+          border-top-right-radius: 5px;
+          font-size: 14px;
+          @include flex();
+
+          &.atStyle {
+            @include atStyle;
+          }
+
+          &:hover {
+            @include atStyle;
+          }
+        }
+      }
+    }
+  }
+}
+
+//main 主体
+//slideshow 轮播图
+.slideshow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  & ul {
+    flex-grow: 1;
+
+    &:first-child {
+      & li {
+        width: 100%;
+        float: left;
+        position: relative;
+
+        & div {
+          width: 25vw;
+          position: absolute;
+          top: 14vh;
+          left: 22vw;
+          color: #faf9f5;
+
+          & h2 {
+            font-weight: 500;
+            font-size: 1.9em;
+          }
+
+          & p {
+            font-size: 1.5em;
+            margin: 0.5vh 0;
+          }
+
+          & button {
+            background: none;
+            color: #faf9f5;
+            border: 1px solid #faf9f5;
+            border-radius: 2px;
+            width: 10vw;
+            height: 7vh;
+            margin-top: 1vh;
+            font-size: 1em;
+          }
+        }
+      }
+    }
+
+    &:last-child {
+      position: absolute;
+      @include flex();
+
+      & li {
+        width: 1.5vh;
+        height: 1.5vh;
+        margin: 0 0.5vh 2vh;
+        background: white;
+        bottom: 0;
+        border-radius: 100%;
+      }
+    }
+  }
+}
+
+
+.content {
+  &:nth-child(2) {
+    background: #f7f7f7;
+  }
+
+  & > div {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0 60px;
+
+    & h4 {
+      line-height: 40px;
+      font-size: 2em;
+      text-align: center;
+    }
+
+    & > p {
+      line-height: 40px;
+      color: #9b9a98;
+      text-align: center;
+    }
+
+    & .cont_1 {
+      @include flex();
+      flex-wrap: wrap;
+
+      & li {
+        background: #ffffff;
+        width: calc((100% - 7px) / 6);
+        height: 15vh;
+        border: 1px solid #ededed;
+        border-collapse: collapse;
+
+        & a {
+          height: 100%;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  &:nth-child(3) {
+    background: #1c1d21;
+
+    & div h4, & div > p {
+      color: white;
+    }
+
+    & ul {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 100px;
+
+      & li {
+        background-color: #cfcfcf;
+        padding: 60px 40px 40px;
+        width: calc((100% - 25px) / 3);
+        position: relative;
+
+        & .successImg {
+          width: 130px;
+          height: 130px;
+          display: block;
+          background: url("../images/demo1_2.png") no-repeat;
+          margin: -130px auto 4vh;
+        }
+
+
+        &:nth-child(2):before {
+          background-position: center;
+        }
+
+        &:nth-child(3):before {
+          background-position: bottom;
+        }
+
+        & p {
+          text-align: center;
+          color: #f75b52;
+          line-height: 30px;
+
+          &:nth-child(2) {
+            font-weight: 700;
+            margin-bottom: 10px;
+            margin-top: 15px;
+            font-size: 18px;
+          }
+
+          &:nth-child(3) {
+            font-size: 16px;
+            color: #020405;
+            line-height: 26px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.cont_success {
+  & li ul {
+    display: flex;
+  }
+
+  & .navs {
+    width: 80%;
+    margin: 0 auto;
+
+
+    & li {
+      width: calc(100% / 4);
+      background-color: #676767;
+      color: white;
+      text-align: center;
+      line-height: 32px;
+      height: 32px;
+
+      &:hover {
+        @include sanjiao;
+        font-size: 1.2rem;
+      }
+    }
+
+
+    & .sanjiao {
+      @include sanjiao;
+    }
+  }
+
+  & .navs_img {
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & li {
+      width: calc((100% - 20px * 2) / 3);
+      margin-top: 20px;
+    }
+  }
+}
+
+.content_news {
+  background: #f2f2f2;
+  padding: 30px 0;
+
+  & > ul {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & .news {
+    width: calc((100% - 30px * 2) / 3);
+
+    & h3:nth-child(1) {
+      margin-bottom: 14px;
+    }
+
+    & ul {
+      & a {
+        display: flex;
+        justify-content: space-between;
+        line-height: 4vh;
+        color: #767676;
+
+        &:hover {
+          color: red;
+          font-size: 1.1rem;
+        }
+
+      }
+
+    }
+
+    & .btn button {
+      border: none;
+      background: #f75b54;
+      color: white;
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+
+      & a {
+        color: white;
+      }
+    }
+  }
+}
+
+//footer 页脚
+
+footer {
+  height: 14vh;
+  background: #383838;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  & a, & p, & li {
+    color: #7b7b7b;
+  }
+
+  & a:hover {
+    color: red;
+    font-size: 1.05rem;
+  }
+
+  & ul {
+    display: flex;
+  }
+}

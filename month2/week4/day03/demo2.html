@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        img {
+            display: block;
+        }
+
+        #root {
+            width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            margin: 30px auto;
+        }
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <img src="./images/0.png" alt="" class="images">
+    <img src="./images/0.png" alt="" class="images">:
+    <img src="./images/0.png" alt="" class="images">
+    <img src="./images/0.png" alt="" class="images">:
+    <img src="./images/0.png" alt="" class="images">
+    <img src="./images/0.png" alt="" class="images">
+</div>
+<script>
+    const images = Array.from(document.getElementsByClassName('images'));
+
+    function nowTime() {
+        let now = new Date();
+        let time = '';
+        let Time = {
+            t: '' + now.getHours(),
+            m: '' + now.getMinutes(),
+            s: '' + now.getSeconds(),
+        }
+        for (let timeKey in Time) {
+            Time[timeKey] = Time[timeKey] < 10 ? '0' + Time[timeKey] : Time[timeKey];
+            time += Time[timeKey]
+        }
+
+        return time;
+    }
+
+
+    function toTime(STime) {
+        let i = 0;
+        images.forEach(image => {
+            image.src = './images/' + STime[i++] + '.png'
+        })
+    }
+
+    toTime(nowTime())
+    setInterval(() => {
+        toTime(nowTime())
+    }, 1000)
+</script>
+
+</body>
+</html>

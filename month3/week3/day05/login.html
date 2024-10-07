@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/1.7.2/axios.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/js-cookie/3.0.5/js.cookie.min.js"></script>
+    <script src="./js/http.js"></script>
+    <title>登录</title>
+</head>
+
+<body>
+<div id="root">
+    <label>
+        用户名<input type="text" name="" id="username"><br>
+        密&emsp;码<input type="text" name="" id="password"><br>
+        <input type="button" value="登录" onclick="login()">
+    </label>
+    <p>没有账户！！！<a href="./register.html">前往注册</a></p>
+
+</div>
+<script>
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+
+    password.addEventListener('keydown', (e) => {
+        if (e.key === "Enter") login();
+    })
+
+    function login() {
+        const uname = username.value;
+        const pword = password.value;
+        ajax({
+            url: '/users/login',
+            method: 'POST',
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            data: {
+                username: uname,
+                password: pword,
+            }
+        }).then((r) => {
+            if (r.data.code === 1) {
+                const data = r.data
+                console.log(data)
+                alert(JSON.stringify(data.message)) // 登录成功
+                Cookies.set('id', data.user.id);
+                Cookies.set('username', data.user.username);
+                Cookies.set('token', data.token);
+                location.href = 'main.html';
+            } else {
+                alert(JSON.stringify(r.data.tips)) // 登录失败
+            }
+        })
+    }
+</script>
+
+</body>
+
+</html>

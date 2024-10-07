@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://at.alicdn.com/t/c/font_4624650_5g2npkwdtv.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header {
+            width: 100%;
+            border-bottom: 1px solid #8b1314;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-image: linear-gradient(#141414, #2a2829);
+        }
+
+        ul {
+            display: flex;
+
+            & li {
+                padding: 20px;
+                border-right: 1px solid #111111;
+
+                &:nth-child(1) {
+                    border-color: #751212;
+                    background-image: linear-gradient(#700503, #b70c0a);
+                }
+
+                &:last-child {
+                    border: none;
+                }
+
+                & a {
+                    color: white;
+                }
+
+                &:hover {
+                    background-image: linear-gradient(#700503, #b70c0a);
+                    border-color: #751212;
+                }
+            }
+
+        }
+
+        .hRight {
+            width: 235px;
+            height: 35px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background: #141414;
+            margin-right: 30px;
+
+            & label {
+                padding: 5px 5px 5px 15px;
+                display: block;
+                height: 100%;
+
+                &::after {
+                    content: '\e62d';
+                    font-family: 'iconfont';
+                    color: white;
+                    font-size: 20px;
+                    font-weight: 700;
+                }
+            }
+
+            & input {
+                height: 100%;
+                background: none;
+                border: none;
+                outline: none;
+                color: whitesmoke;
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div id="root">
+    <header>
+        <div class="hLeft">
+            <ul>
+                <li><a href="">Home</a></li>
+                <li><a href="">About us</a></li>
+                <li><a href="">Service</a></li>
+                <li><a href="">Clients</a></li>
+                <li><a href="">Portfolio</a></li>
+                <li><a href="">Contact us</a></li>
+            </ul>
+        </div>
+        <div class="hRight">
+            <label>
+                <input type="text" placeholder="Search our website">
+            </label>
+        </div>
+    </header>
+</div>
+
+</body>
+</html>
